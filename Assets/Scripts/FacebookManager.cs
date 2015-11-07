@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class FacebookManager : MonoBehaviour {
 
 	public Text ErrorText;
+	public Image UserPic;
 	Texture2D UserImg;
 
 	void Awake ()
@@ -121,6 +122,41 @@ public class FacebookManager : MonoBehaviour {
 
 	public void FacebookGetFriendsInstalled(){
 		FB.API ("me/friends?fields=installed", Facebook.Unity.HttpMethod.GET, APICallback);
+		//FB.API ("me?fields=id,name,picture", Facebook.Unity.HttpMethod.GET, APICallback);
+	}
+
+	public void FacebookGetUserPicture(){
+		/*
+		WWW url = new WWW("https" + "://graph.facebook.com/me/picture?type=large"); 
+		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
+		url.LoadImageIntoTexture(textFb2);
+		UserImg = textFb2;
+		UserPic.sprite = Sprite.Create(UserImg, new Rect(0, 0, UserImg.width, UserImg.height), new Vector2(0,0));
+		*/
+		StartCoroutine (UserImage());
+	}
+	public void FacebookGetUserPicture2(){
+		/*FB.API(FacebookUtil.GetPictureURL(userInfo.id, 128, 128), Facebook.HttpMethod.GET, (FBResult pictureResult) => {
+			if (pictureResult.Error != null) {
+				Debug.LogError("Error getting FB friend picture: " + pictureResult.Error);
+			}
+			else {
+				Util.GetPictureURL(
+				pictureURL = FacebookUtil.DeserializePictureURLString(pictureResult.Text);
+			}
+			finishedGettingPictureURL = true;
+		});*/
+	}
+
+	IEnumerator UserImage()
+	{
+		//WWW url = FB.API ("me/picture?type=large", Facebook.Unity.HttpMethod.GET, APICallback);
+		WWW url = new WWW("https" + "://graph.facebook.com/10153071449647172/picture?type=large");
+		//WWW url = new WWW ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
+		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
+		yield return url;
+		url.LoadImageIntoTexture(textFb2);
+		UserPic.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
 	}
 
 	//IEnumerator UserImage()
@@ -149,7 +185,7 @@ public class FacebookManager : MonoBehaviour {
 		
 	}*/
 
-	void APICallback(IResult result)                                                                                              
+	void APICallback(IGraphResult result)                                                                                              
 	{                                                                                                                              
 		//Util.Log("APICallback");                                                                                                
 		/*if (result.Error != null)                                                                                                  
@@ -163,8 +199,38 @@ public class FacebookManager : MonoBehaviour {
 		profile = Util.DeserializeJSONProfile(result.Text); 
 		*/
 		ErrorText.text=result.RawResult;
+		var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
+		var friendList = new List<object>();
+		friendList = (List<object>)(dict["data"]);
+
+		string temp = "";
+		foreach(Object str in friendList)
+		{
+			temp += str.ToString(); //maybe also + '\n' to put them on their own line.
+		}
+
+		ErrorText.text = temp.ToString();
+
+		int _friendCount = friendList.Count;
+		Debug.Log("Found friends on FB, _friendCount ... " +_friendCount);
+		List<string> friendIDsFromFB = new List<string>();
+		for (int i=0; i<_friendCount; i++) {
+			string friendFBID = getDataValueForKey( (Dictionary<string,object>)(friendList[i]), "id");
+			string friendName =    getDataValueForKey( (Dictionary<string,object>)(friendList[i]), "name");
+			Debug.Log( i +"/" +_friendCount +" " +friendFBID +" " +friendName);
+			friendIDsFromFB.Add(friendFBID);
+		}
 		
-	}    
+	}
 
-
+	private string getDataValueForKey(Dictionary<string, object> dict, string key) {
+		object objectForKey;
+		if (dict.TryGetValue(key, out objectForKey)) {
+			return (string)objectForKey;
+		} else {
+			return "";
+		}
+	}
+	
+	
 }
