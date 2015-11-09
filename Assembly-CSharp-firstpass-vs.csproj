@@ -46,9 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\WRP_AndroidVideoPlugin\Scripts\WRPAndroidVideoPlayerBinding.cs" />
-     <Compile Include="Assets\Plugins\WRP_AndroidVideoPlugin\Scripts\WRPSampleListener.cs" />
-     <Compile Include="Assets\Plugins\WRP_AndroidVideoPlugin\TestScene\Scripts\WRPGuiManager.cs" />
      <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
      <Compile Include="Assets\Standard Assets\Cameras\Scripts\AutoCam.cs" />
      <Compile Include="Assets\Standard Assets\Cameras\Scripts\FreeLookCam.cs" />
@@ -69,7 +66,6 @@
      <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
      <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-     <None Include="Assets\Plugins\WRP_AndroidVideoPlugin\AndroidManifest.xml" />
      <None Include="Assets\GoogleMaps\README.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\StreamingAssets\build_info.txt" />

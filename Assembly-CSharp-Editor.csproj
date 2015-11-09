@@ -58,7 +58,6 @@
      <Compile Include="Assets\Facebook\Editor\iOS\PListParser.cs" />
      <Compile Include="Assets\Reporter\Editor\ReporterEditor.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-     <None Include="Assets\Plugins\WRP_AndroidVideoPlugin\AndroidManifest.xml" />
      <None Include="Assets\GoogleMaps\README.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\StreamingAssets\build_info.txt" />

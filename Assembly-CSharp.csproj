@@ -146,7 +146,6 @@
      <Compile Include="Assets\Scripts\Structs\FacebookInfoStruct.cs" />
      <Compile Include="Assets\Scripts\Util.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-     <None Include="Assets\Plugins\WRP_AndroidVideoPlugin\AndroidManifest.xml" />
      <None Include="Assets\GoogleMaps\README.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\StreamingAssets\build_info.txt" />
