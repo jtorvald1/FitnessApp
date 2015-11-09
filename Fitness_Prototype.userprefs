@@ -1,16 +1,31 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FacebookManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Plugins\Android\AndroidManifest.xml">
     <Files>
-      <File FileName="Assets\Scripts\FacebookManager.cs" Line="188" Column="31" />
       <File FileName="Assets\Scripts\Util.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\GoogleMaps\Scripts\GoogleMap.cs" Line="1" Column="1" />
       <File FileName="Assets\GoogleMaps\README.txt" Line="1" Column="1" />
+      <File FileName="..\space-on-earth-v1\Assets\Scripts\ModeControllers\GPSController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Structs\FacebookInfoStruct.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FacebookManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MoviePlayer.cs" Line="17" Column="35" />
+      <File FileName="Assets\Plugins\Android\AndroidManifest.xml" Line="4" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="209" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="251" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="216" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="223" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="223" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="239" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="210" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="79" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="249" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="167" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

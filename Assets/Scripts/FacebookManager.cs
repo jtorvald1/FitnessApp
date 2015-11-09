@@ -11,6 +11,10 @@ public class FacebookManager : MonoBehaviour {
 	public Image UserPic;
 	Texture2D UserImg;
 
+	//Struct to store Facebook info
+	public FacebookInfoStruct facebookInfoStruct = new FacebookInfoStruct();
+
+
 	void Awake ()
 	{
 		if (!FB.IsInitialized) {
@@ -72,7 +76,8 @@ public class FacebookManager : MonoBehaviour {
 
 	private void AuthCallback (ILoginResult result) {
 		if (FB.IsLoggedIn) {
-			FB.API("/me?fields=name,email", Facebook.Unity.HttpMethod.GET, APICallback);
+			FB.API("/me?fields=name,email,gender", Facebook.Unity.HttpMethod.GET, APICallback);
+			FB.API ("me/friends?fields=installed", Facebook.Unity.HttpMethod.GET, APIFriendsListCallback);
 			var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
 			// Print current access token's User ID
 			Debug.Log(aToken.UserId);
@@ -121,10 +126,11 @@ public class FacebookManager : MonoBehaviour {
 	}
 
 	public void FacebookGetFriendsInstalled(){
-		FB.API ("me/friends?fields=installed", Facebook.Unity.HttpMethod.GET, APICallback);
+		FB.API ("me/friends?fields=installed", Facebook.Unity.HttpMethod.GET, APIFriendsListCallback);
 		//FB.API ("me?fields=id,name,picture", Facebook.Unity.HttpMethod.GET, APICallback);
 	}
 
+	//Right now gets called at end of GetFriendsCallback. Better spot for this?
 	public void FacebookGetUserPicture(){
 		/*
 		WWW url = new WWW("https" + "://graph.facebook.com/me/picture?type=large"); 
@@ -151,12 +157,13 @@ public class FacebookManager : MonoBehaviour {
 	IEnumerator UserImage()
 	{
 		//WWW url = FB.API ("me/picture?type=large", Facebook.Unity.HttpMethod.GET, APICallback);
-		WWW url = new WWW("https" + "://graph.facebook.com/10153071449647172/picture?type=large");
+		WWW url = new WWW("https" + "://graph.facebook.com/" + facebookInfoStruct.UserID + "/picture?type=large");
 		//WWW url = new WWW ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
 		yield return url;
 		url.LoadImageIntoTexture(textFb2);
 		UserPic.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
+		facebookInfoStruct.UserProfilePic = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
 	}
 
 	//IEnumerator UserImage()
@@ -200,18 +207,37 @@ public class FacebookManager : MonoBehaviour {
 		*/
 		ErrorText.text=result.RawResult;
 		var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
+		string name = null;
+		string gender = null;
+		string userID = null;
+		string email = null;
+		name = (string)(dict ["name"]);
+		gender = (string)(dict ["gender"]);
+		userID = (string)(dict ["id"]);
+		//email = (string)(dict ["email"]);
+
+		facebookInfoStruct.UserName = name;
+		facebookInfoStruct.UserGender = gender;
+		facebookInfoStruct.UserID = userID;
+	}
+
+	void APIFriendsListCallback(IGraphResult result)
+	{
+		ErrorText.text=result.RawResult;
+		var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
 		var friendList = new List<object>();
 		friendList = (List<object>)(dict["data"]);
 
+		/*
 		string temp = "";
 		foreach(Object str in friendList)
 		{
 			temp += str.ToString(); //maybe also + '\n' to put them on their own line.
 		}
-
-		ErrorText.text = temp.ToString();
+		*/
 
 		int _friendCount = friendList.Count;
+		ErrorText.text = _friendCount.ToString ();
 		Debug.Log("Found friends on FB, _friendCount ... " +_friendCount);
 		List<string> friendIDsFromFB = new List<string>();
 		for (int i=0; i<_friendCount; i++) {
@@ -220,7 +246,8 @@ public class FacebookManager : MonoBehaviour {
 			Debug.Log( i +"/" +_friendCount +" " +friendFBID +" " +friendName);
 			friendIDsFromFB.Add(friendFBID);
 		}
-		
+		facebookInfoStruct.UserFriends = friendIDsFromFB;
+		FacebookGetUserPicture();
 	}
 
 	private string getDataValueForKey(Dictionary<string, object> dict, string key) {

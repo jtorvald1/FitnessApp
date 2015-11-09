@@ -58,6 +58,7 @@
      <Compile Include="Assets\Facebook\Editor\iOS\PListParser.cs" />
      <Compile Include="Assets\Reporter\Editor\ReporterEditor.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\Plugins\WRP_AndroidVideoPlugin\AndroidManifest.xml" />
      <None Include="Assets\GoogleMaps\README.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\StreamingAssets\build_info.txt" />
@@ -118,6 +119,8 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
       <Project>{60FE9F3F-8D1D-8EE3-153A-DC035B7E221C}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-vs.csproj">
+      <Project>{08E6A820-0445-21E4-761B-C2AEB91B1DAE}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
