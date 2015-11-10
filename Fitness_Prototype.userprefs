@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Plugins\Android\AndroidManifest.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MovieDev.cs">
     <Files>
-      <File FileName="Assets\Plugins\Android\AndroidManifest.xml" Line="4" Column="16" />
+      <File FileName="Assets\Scripts\MovieDev.cs" Line="19" Column="78" />
+      <File FileName="Assets\Scripts\MoviePlayer.cs" Line="56" Column="5" />
+      <File FileName="Assets\Plugins\Android\AndroidManifest.xml" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Util.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\GoogleMaps\Scripts\GoogleMap.cs" Line="1" Column="1" />
@@ -10,7 +12,8 @@
       <File FileName="..\space-on-earth-v1\Assets\Scripts\ModeControllers\GPSController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Structs\FacebookInfoStruct.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FacebookManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MoviePlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Vuforia Video Playback\Scripts\VideoPlaybackBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Examples\Scripts\SubMenus\GraphRequest.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -25,7 +28,12 @@
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="79" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="249" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="167" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\MovieDev.cs" line="47" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\MovieDev.cs" line="49" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\MovieDev.cs" line="58" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Assets\Vuforia Video Playback\Scripts\VideoPlaybackBehaviour.cs" line="133" offsetX="510" offsetY="1568" expression="mIconPlane" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>
