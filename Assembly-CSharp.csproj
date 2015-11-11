@@ -139,9 +139,11 @@
      <Compile Include="Assets\Reporter\Test\TestReporter.cs" />
      <Compile Include="Assets\Scripts\CreateScrollList.cs" />
      <Compile Include="Assets\Scripts\FacebookManager.cs" />
+     <Compile Include="Assets\Scripts\Generators\VideoGenerator.cs" />
+     <Compile Include="Assets\Scripts\Generators\VideoGeneratorWindows.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\MovieDev.cs" />
      <Compile Include="Assets\Scripts\MoviePlayer.cs" />
+     <Compile Include="Assets\Scripts\Old\MovieDev.cs" />
      <Compile Include="Assets\Scripts\SampleButton.cs" />
      <Compile Include="Assets\Scripts\ScreenManager.cs" />
      <Compile Include="Assets\Scripts\Structs\FacebookInfoStruct.cs" />

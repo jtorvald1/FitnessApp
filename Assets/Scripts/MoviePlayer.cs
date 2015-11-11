@@ -6,6 +6,7 @@ public class MoviePlayer : MonoBehaviour {
 
 	private WWW www;
 	private bool done=false;
+	/*
 	private MovieTexture mt;
 
 	public RawImage m_vidImage;
@@ -42,15 +43,17 @@ public class MoviePlayer : MonoBehaviour {
 			renderer.material.mainTexture = mt;
 			mt.Play();
 			done=true;
-			*/
+			*//*
 		}
 	
 	}
+*/
 
 	public void PlayMovie () {
 
-		//Handheld.PlayFullScreenMovie (www, Color.black, FullScreenMovieControlMode.Full);
+	Handheld.PlayFullScreenMovie ("IMG_0342.ogv", Color.black, FullScreenMovieControlMode.CancelOnInput);
 	}
+	/*
 
 	public void PlayUIMovie() {
 		//mt.Play();
@@ -60,5 +63,5 @@ public class MoviePlayer : MonoBehaviour {
 
 		//function Start(){ GetComponent(RawImage).mainTexture.Play(); }
 	}
-
+*/
 }
