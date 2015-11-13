@@ -131,6 +131,14 @@
      <Compile Include="Assets\Facebook\Scripts\Utils\MiniJson.cs" />
      <Compile Include="Assets\Facebook\Scripts\Utils\Utilities.cs" />
      <Compile Include="Assets\GoogleMaps\Scripts\GoogleMap.cs" />
+     <Compile Include="Assets\Helpers\Extensions.cs" />
+     <Compile Include="Assets\Helpers\GeoConverter.cs" />
+     <Compile Include="Assets\Helpers\JSON.cs" />
+     <Compile Include="Assets\Helpers\Triangulator.cs" />
+     <Compile Include="Assets\Models\BuildingHolder.cs" />
+     <Compile Include="Assets\Models\BuildingPolygon.cs" />
+     <Compile Include="Assets\Models\RoadPolygon.cs" />
+     <Compile Include="Assets\Models\Tile.cs" />
      <Compile Include="Assets\Reporter\MultiKeyDictionary.cs" />
      <Compile Include="Assets\Reporter\Reporter.cs" />
      <Compile Include="Assets\Reporter\ReporterGUI.cs" />
@@ -138,6 +146,7 @@
      <Compile Include="Assets\Reporter\Test\Rotate.cs" />
      <Compile Include="Assets\Reporter\Test\TestReporter.cs" />
      <Compile Include="Assets\Scripts\CreateScrollList.cs" />
+     <Compile Include="Assets\Scripts\FacebookFriend.cs" />
      <Compile Include="Assets\Scripts\FacebookManager.cs" />
      <Compile Include="Assets\Scripts\Generators\VideoGenerator.cs" />
      <Compile Include="Assets\Scripts\Generators\VideoGeneratorWindows.cs" />
@@ -146,10 +155,12 @@
      <Compile Include="Assets\Scripts\Old\MovieDev.cs" />
      <Compile Include="Assets\Scripts\SampleButton.cs" />
      <Compile Include="Assets\Scripts\ScreenManager.cs" />
-     <Compile Include="Assets\Scripts\Structs\FacebookInfoStruct.cs" />
+     <Compile Include="Assets\Scripts\Structs\FacebookUserDataStruct.cs" />
      <Compile Include="Assets\Scripts\Util.cs" />
+     <Compile Include="Assets\Scripts\Utils\CoroutineWithData.cs" />
      <Compile Include="Assets\Vuforia Video Playback\Scripts\VideoPlaybackBehaviour.cs" />
      <Compile Include="Assets\Vuforia Video Playback\Scripts\VideoPlayerHelper.cs" />
+     <Compile Include="Assets\World.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\GoogleMaps\README.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

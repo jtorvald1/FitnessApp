@@ -10,9 +10,12 @@ public class FacebookManager : MonoBehaviour {
 	public Text ErrorText;
 	public Image UserPic;
 	Texture2D UserImg;
+	public FacebookFriend fbfriend = new FacebookFriend();
 
 	//Struct to store Facebook info
-	public FacebookInfoStruct facebookInfoStruct = new FacebookInfoStruct();
+	public FacebookUserDataStruct facebookInfoStruct = new FacebookUserDataStruct();
+
+	public List<string> Friendlist = new List<string>();
 
 
 	void Awake ()
@@ -28,7 +31,7 @@ public class FacebookManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		facebookInfoStruct.UserFriends = new List<FacebookFriend>();
 	}
 	
 	// Update is called once per frame
@@ -77,7 +80,7 @@ public class FacebookManager : MonoBehaviour {
 	private void AuthCallback (ILoginResult result) {
 		if (FB.IsLoggedIn) {
 			FB.API("/me?fields=name,email,gender", Facebook.Unity.HttpMethod.GET, APICallback);
-			FB.API ("me/friends?fields=installed", Facebook.Unity.HttpMethod.GET, APIFriendsListCallback);
+			FB.API ("me/friends?fields=installed,name,id", Facebook.Unity.HttpMethod.GET, APIFriendsListCallback);
 			var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
 			// Print current access token's User ID
 			Debug.Log(aToken.UserId);
@@ -131,7 +134,7 @@ public class FacebookManager : MonoBehaviour {
 	}
 
 	//Right now gets called at end of GetFriendsCallback. Better spot for this?
-	public void FacebookGetUserPicture(){
+	public void FacebookGetUserPicture(string userID){
 		/*
 		WWW url = new WWW("https" + "://graph.facebook.com/me/picture?type=large"); 
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
@@ -139,8 +142,21 @@ public class FacebookManager : MonoBehaviour {
 		UserImg = textFb2;
 		UserPic.sprite = Sprite.Create(UserImg, new Rect(0, 0, UserImg.width, UserImg.height), new Vector2(0,0));
 		*/
-		StartCoroutine (UserImage());
+
+		StartCoroutine (UserImage(userID));
+
+		//Using coroutinewithdata util
+		/*
+		CoroutineWithData cd = new CoroutineWithData(this, UserImage(userID));
+		yield return cd.coroutine;
+		return (Sprite) cd.result;
+		*/
 	}
+
+	public void FacebookGetFriendPicture(string userID){
+		StartCoroutine (FriendImage(userID));
+	}
+
 	public void FacebookGetUserPicture2(){
 		/*FB.API(FacebookUtil.GetPictureURL(userInfo.id, 128, 128), Facebook.HttpMethod.GET, (FBResult pictureResult) => {
 			if (pictureResult.Error != null) {
@@ -154,16 +170,39 @@ public class FacebookManager : MonoBehaviour {
 		});*/
 	}
 
-	IEnumerator UserImage()
+
+	//UserImage() and FriendImage() SHOULD BE COMBINED TO A SINGLE FUNCTION THAT RETURNS THE IMAGE.
+	//BUT I DON'T KNOW HOW TO DO THAT WITH A COROUTINE
+	IEnumerator UserImage(string userID)
 	{
 		//WWW url = FB.API ("me/picture?type=large", Facebook.Unity.HttpMethod.GET, APICallback);
-		WWW url = new WWW("https" + "://graph.facebook.com/" + facebookInfoStruct.UserID + "/picture?type=large");
+		WWW url = new WWW("https" + "://graph.facebook.com/" + userID + "/picture?type=large");
 		//WWW url = new WWW ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
 		yield return url;
 		url.LoadImageIntoTexture(textFb2);
-		UserPic.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
+		Sprite sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
+		yield return sprite;
+		//UserPic.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
 		facebookInfoStruct.UserProfilePic = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
+	}
+	//UserImage() and FriendImage() SHOULD BE COMBINED TO A SINGLE FUNCTION THAT RETURNS THE IMAGE.
+	//BUT I DON'T KNOW HOW TO DO THAT WITH A COROUTINE
+	IEnumerator FriendImage(string userID)
+	{
+		//WWW url = FB.API ("me/picture?type=large", Facebook.Unity.HttpMethod.GET, APICallback);
+		WWW url = new WWW("https" + "://graph.facebook.com/" + userID + "/picture?type=large");
+		//WWW url = new WWW ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
+		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
+		yield return url;
+		url.LoadImageIntoTexture(textFb2);
+		Sprite sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
+		yield return sprite;
+		foreach (var friend in facebookInfoStruct.UserFriends) {
+			if (friend.FriendID == userID)
+				friend.FriendProfilePic = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
+				UserPic.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
+		}
 	}
 
 	//IEnumerator UserImage()
@@ -191,6 +230,17 @@ public class FacebookManager : MonoBehaviour {
 		}
 		
 	}*/
+
+	void CreateFacebookFriend(string id, string name)
+	{
+		fbfriend = new FacebookFriend();
+		fbfriend.FriendID = id;
+		fbfriend.FriendName = name;
+		facebookInfoStruct.UserFriends.Add(fbfriend);
+		//fbfriend.FriendProfilePic = FacebookGetFriendPicture (id);
+		FacebookGetFriendPicture (id);
+		//fbfriend.GetProfilePic ();
+	}
 
 	void APICallback(IGraphResult result)                                                                                              
 	{                                                                                                                              
@@ -243,11 +293,12 @@ public class FacebookManager : MonoBehaviour {
 		for (int i=0; i<_friendCount; i++) {
 			string friendFBID = getDataValueForKey( (Dictionary<string,object>)(friendList[i]), "id");
 			string friendName =    getDataValueForKey( (Dictionary<string,object>)(friendList[i]), "name");
-			Debug.Log( i +"/" +_friendCount +" " +friendFBID +" " +friendName);
+			Debug.Log( i +"/" +_friendCount +" " + "FriendFBID " +friendFBID +" " + "FriendName " +friendName);
 			friendIDsFromFB.Add(friendFBID);
+			CreateFacebookFriend(friendFBID, friendName);
 		}
-		facebookInfoStruct.UserFriends = friendIDsFromFB;
-		FacebookGetUserPicture();
+		//facebookInfoStruct.UserFriends = friendIDsFromFB;
+		FacebookGetUserPicture(facebookInfoStruct.UserID);
 	}
 
 	private string getDataValueForKey(Dictionary<string, object> dict, string key) {

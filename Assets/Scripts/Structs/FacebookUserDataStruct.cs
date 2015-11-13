@@ -2,14 +2,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public struct FacebookInfoStruct {
+public struct FacebookUserDataStruct {
 	
 	private string userName;
 	private string userID;
 	private string userGender;
 	private string userEmail;
 	private Sprite userProfilePic;
-	private List<string> userFriends;
+	private List<FacebookFriend> userFriends;
+	private string checkedInGymID;
 
 	/*
 	public FacebookInfoStruct () {
@@ -46,8 +47,12 @@ public struct FacebookInfoStruct {
 		get { return this.userProfilePic; }
 		set { userProfilePic = value; }
 	}
-	public List<string> UserFriends {
+	public List<FacebookFriend> UserFriends {
 		get { return this.userFriends; }
 		set { userFriends = value; }
+	}
+	public string CheckedInGymID {
+		get {return this.checkedInGymID;}
+		set {checkedInGymID = value;}
 	}
 }

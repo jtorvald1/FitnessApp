@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class VideoGeneratorWindows : MonoBehaviour {
 
+#if UNITY_EDITOR
 	private WWW www;
 	private bool done=false;
 	private MovieTexture mt;
@@ -59,4 +60,5 @@ public class VideoGeneratorWindows : MonoBehaviour {
 			mt.Stop();
 		}
 	}
+#endif
 }
