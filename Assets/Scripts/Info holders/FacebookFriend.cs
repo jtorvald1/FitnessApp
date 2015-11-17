@@ -4,8 +4,8 @@ using Facebook.Unity;
 
 public class FacebookFriend : MonoBehaviour {
 
-	private string friendName;
 	private string friendID;
+	private string friendName;
 	private Sprite friendProfilePic;
 	private string checkedInGymID;
 

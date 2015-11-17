@@ -17,9 +17,32 @@ public class FacebookManager : MonoBehaviour {
 
 	public List<string> Friendlist = new List<string>();
 
+	#region Init
+	private static FacebookManager _instance;
+	public static FacebookManager Instance
+	{
+		get
+		{
+			return _instance;
+		}
+	}
 
 	void Awake ()
 	{
+		if(_instance == null)
+		{
+			//If I am the first instance, make me the Singleton
+			_instance = this;
+			DontDestroyOnLoad(this);
+		}
+		else
+		{
+			//If a Singleton already exists and you find
+			//another reference in scene, destroy it!
+			if(this != _instance)
+				Destroy(this.gameObject);
+		}
+
 		if (!FB.IsInitialized) {
 			// Initialize the Facebook SDK
 			FB.Init(InitCallback, OnHideUnity);
@@ -28,6 +51,7 @@ public class FacebookManager : MonoBehaviour {
 			FB.ActivateApp();
 		}
 	}
+	#endregion
 
 	// Use this for initialization
 	void Start () {
@@ -277,6 +301,7 @@ public class FacebookManager : MonoBehaviour {
 		var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
 		var friendList = new List<object>();
 		friendList = (List<object>)(dict["data"]);
+		facebookInfoStruct.UserFriends.Clear ();
 
 		/*
 		string temp = "";

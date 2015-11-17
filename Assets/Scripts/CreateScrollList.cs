@@ -30,6 +30,17 @@ public class CreateScrollList : MonoBehaviour {
 			button.icon.sprite = item.icon;
 			//          button.button.onClick = item.thingToDo;
 			newButton.transform.SetParent (contentPanel);
+			if (Screen.height <= 400)
+			{newButton.GetComponent <LayoutElement>().minHeight = 50f;}
+			else if(Screen.height > 400 && Screen.height <= 800)
+			{newButton.GetComponent <LayoutElement>().minHeight = 80f;}
+			else if(Screen.height > 800 && Screen.height <= 1200)
+			{newButton.GetComponent <LayoutElement>().minHeight = 100f;}
+			else if(Screen.height > 1200 && Screen.height <= 1600)
+			{newButton.GetComponent <LayoutElement>().minHeight = 120f;}
+			else if(Screen.height > 1600 && Screen.height <= 1900)
+			{newButton.GetComponent <LayoutElement>().minHeight = 140f;}
+			//newButton.GetComponent<RectTransform>().localScale = new Vector3(1f,1f,1f);﻿
 		}
 	}
 	

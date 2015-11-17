@@ -57,6 +57,7 @@
      <Compile Include="Assets\Facebook\Editor\iOS\PListDict.cs" />
      <Compile Include="Assets\Facebook\Editor\iOS\PListParser.cs" />
      <Compile Include="Assets\Reporter\Editor\ReporterEditor.cs" />
+     <Compile Include="Assets\Scripts\Editor\CreateGymEditor.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\GoogleMaps\README.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
