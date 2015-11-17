@@ -1,24 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Editor\CreateGymEditor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Managers\GoogleMapImageManager.cs">
     <Files>
+      <File FileName="Assets\Scripts\Editor\CreateGymEditor.cs" Line="128" Column="24" />
       <File FileName="Assets\Scripts\CreateScrollList.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Structs\FacebookUserDataStruct.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Utils\CoroutineWithData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Util.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CreateFriendScrollList.cs" Line="1" Column="1" />
       <File FileName="..\space-on-earth-v1\Assets\Area51\Scripts\Singletons\InputManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Info holders\Gym.cs" Line="15" Column="8" />
-      <File FileName="Assets\Scripts\Info holders\FacebookFriend.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Info holders\Exercise.cs" Line="7" Column="8" />
-      <File FileName="Assets\Scripts\Info holders\Machine.cs" Line="8" Column="8" />
-      <File FileName="Assets\Scripts\Managers\GymManager.cs" Line="7" Column="9" />
-      <File FileName="Assets\Scripts\Managers\GoogleMapImageManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Info holders\Gym.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Info holders\Exercise.cs" Line="56" Column="9" />
+      <File FileName="Assets\Scripts\Info holders\Machine.cs" Line="48" Column="9" />
       <File FileName="Assets\Scripts\Managers\FacebookManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\GoogleMaps\Scripts\GoogleMap.cs" Line="1" Column="1" />
-      <File FileName="Assets\Reporter\Editor\ReporterEditor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Editor\CreateGymEditor.cs" Line="148" Column="39" />
-      <File FileName="Assets\Scripts\MoviePlayer.cs" Line="54" Column="33" />
+      <File FileName="Assets\Scripts\CreateMachineScrollList.cs" Line="21" Column="2" />
+      <File FileName="Assets\Scripts\Managers\GoogleMapImageManager.cs" Line="39" Column="6" />
+      <File FileName="Assets\Scripts\MoviePlayer.cs" Line="54" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -47,6 +42,13 @@
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="262" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="263" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="224" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="19" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="42" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="42" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="40" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="39" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="17" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="39" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

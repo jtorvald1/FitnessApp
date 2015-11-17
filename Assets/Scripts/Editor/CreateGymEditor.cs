@@ -22,10 +22,12 @@ public class CreateGymEditor : EditorWindow {
 	string machineID;
 	string machineName;
 	string machineVidPath;
+	Sprite machinePic;
 
 	string exerciseID;
 	string exerciseName;
 	string exerciseVidPath;
+	Sprite exercisePic;
 
 	List<Machine> machList = new List<Machine>();
 	List<Exercise> exList = new List<Exercise>();
@@ -69,11 +71,12 @@ public class CreateGymEditor : EditorWindow {
 		machineID = EditorGUILayout.TextField ("Machine ID", machineID);
 		machineName = EditorGUILayout.TextField ("Machine Name", machineName);
 		machineVidPath = EditorGUILayout.TextField ("Machine video path", machineVidPath);
+		machinePic = EditorGUILayout.ObjectField ("MachinePic", machinePic, typeof(Sprite), false) as Sprite;
 		
 		
 		if(GUILayout.Button ("Create Machine"))
 		{
-			machList.Add(CreateMachine(machineID, machineName, machineVidPath));
+			machList.Add(CreateMachine(machineID, machineName, machineVidPath, machinePic));
 		}
 
 
@@ -83,11 +86,12 @@ public class CreateGymEditor : EditorWindow {
 		exerciseID = EditorGUILayout.TextField ("Exercise ID", exerciseID);
 		exerciseName = EditorGUILayout.TextField ("Exercise Name", exerciseName);
 		exerciseVidPath = EditorGUILayout.TextField ("Exercise video path", exerciseVidPath);
+		exercisePic = EditorGUILayout.ObjectField ("ExercisePic", exercisePic, typeof(Sprite), false) as Sprite;
 
 
 		if(GUILayout.Button ("Create Exercise"))
 		{
-			exList.Add(CreateExercise(exerciseID, exerciseName, exerciseVidPath));
+			exList.Add(CreateExercise(exerciseID, exerciseName, exerciseVidPath, exercisePic));
 		}
 
 		if(GUILayout.Button ("Create Gym"))
@@ -96,7 +100,7 @@ public class CreateGymEditor : EditorWindow {
 		}
 	}
 
-	public Machine CreateMachine(string id, string name, string vid)
+	public Machine CreateMachine(string id, string name, string vid, Sprite pic)
 	{
 		go = new GameObject();
 		Machine ma = go.AddComponent<Machine> ();
@@ -106,11 +110,12 @@ public class CreateGymEditor : EditorWindow {
 		ma.MachineID = id;
 		ma.MachineName = name;
 		ma.MachineVideoPath = vid;
+		ma.MachinePic = pic;
 		
 		return ma;
 	}
 
-	public Exercise CreateExercise(string id, string name, string vid)
+	public Exercise CreateExercise(string id, string name, string vid, Sprite pic)
 	{
 		go = new GameObject();
 		Exercise ex = go.AddComponent<Exercise> ();
@@ -120,6 +125,7 @@ public class CreateGymEditor : EditorWindow {
 		ex.ExerciseID = id;
 		ex.ExerciseName = name;
 		ex.ExerciseVideoPath = vid;
+		ex.ExercisePic = pic;
 		
 		return ex;
 	}

@@ -6,6 +6,7 @@ public class Exercise : MonoBehaviour {
 	public string exerciseID;
 	public string exerciseName;
 	public string exerciseVideoPath;
+	public Sprite exercisePic;
 
 	public Exercise (string exID, string exName, string exVidPath) {
 
@@ -49,6 +50,15 @@ public class Exercise : MonoBehaviour {
 		}
 		set {
 			exerciseVideoPath = value;
+		}
+	}
+
+	public Sprite ExercisePic {
+		get {
+			return this.exercisePic;
+		}
+		set {
+			exercisePic = value;
 		}
 	}
 }

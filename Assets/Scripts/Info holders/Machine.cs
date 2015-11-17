@@ -6,6 +6,7 @@ public class Machine : MonoBehaviour {
 	public string machineID;
 	public string machineName;
 	public string machineVideoPath;
+	public Sprite machinePic;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,15 @@ public class Machine : MonoBehaviour {
 		}
 		set {
 			machineVideoPath = value;
+		}
+	}
+
+	public Sprite MachinePic {
+		get {
+			return this.machinePic;
+		}
+		set {
+			machinePic = value;
 		}
 	}
 }

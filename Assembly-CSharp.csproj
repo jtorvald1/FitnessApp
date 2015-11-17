@@ -146,6 +146,7 @@
      <Compile Include="Assets\Reporter\Test\Rotate.cs" />
      <Compile Include="Assets\Reporter\Test\TestReporter.cs" />
      <Compile Include="Assets\Scripts\CreateFriendScrollList.cs" />
+     <Compile Include="Assets\Scripts\CreateMachineScrollList.cs" />
      <Compile Include="Assets\Scripts\CreateScrollList.cs" />
      <Compile Include="Assets\Scripts\Generators\VideoGenerator.cs" />
      <Compile Include="Assets\Scripts\Generators\VideoGeneratorWindows.cs" />
