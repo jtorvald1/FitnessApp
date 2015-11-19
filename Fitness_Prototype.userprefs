@@ -1,57 +1,25 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Managers\GoogleMapImageManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Editor\CreateGymEditor.cs" Line="128" Column="24" />
-      <File FileName="Assets\Scripts\CreateScrollList.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Util.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CreateFriendScrollList.cs" Line="1" Column="1" />
-      <File FileName="..\space-on-earth-v1\Assets\Area51\Scripts\Singletons\InputManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Info holders\Gym.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Info holders\Exercise.cs" Line="56" Column="9" />
-      <File FileName="Assets\Scripts\Info holders\Machine.cs" Line="48" Column="9" />
-      <File FileName="Assets\Scripts\Managers\FacebookManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CreateMachineScrollList.cs" Line="21" Column="2" />
-      <File FileName="Assets\Scripts\Managers\GoogleMapImageManager.cs" Line="39" Column="6" />
-      <File FileName="Assets\Scripts\MoviePlayer.cs" Line="54" Column="45" />
+      <File FileName="Assets\Scripts\Managers\GoogleMapImageManager.cs" Line="55" Column="18" />
+      <File FileName="Assets\UnitySlippyMap\Map\MapBehaviour.cs" Line="100" Column="8" />
+      <File FileName="Assets\TestScripts\TestMap.cs" Line="293" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="283" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="290" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="297" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="297" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="284" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="106" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="212" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="322" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="321" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="265" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="267" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="217" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="218" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="220" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="221" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="222" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="223" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="181" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="266" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="260" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="261" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="262" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="263" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\FacebookManager.cs" line="224" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="19" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="42" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="42" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="40" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="39" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="17" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\GoogleMapImageManager.cs" line="39" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="378" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="379" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="380" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="381" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="383" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="382" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="386" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="385" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="387" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\TestScripts\TestMap.cs" line="389" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
-    <Watch file="Assets\Vuforia Video Playback\Scripts\VideoPlaybackBehaviour.cs" line="133" offsetX="510" offsetY="1568" expression="mIconPlane" liveUpdate="False" />
-  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

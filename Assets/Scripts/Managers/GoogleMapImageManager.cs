@@ -7,6 +7,7 @@ public class GoogleMapImageManager : MonoBehaviour {
 
 	public GoogleMap map;
 	public Image mapImage;
+	public TestMap testMap;
 
 	// Use this for initialization
 	void Start () {
@@ -14,8 +15,9 @@ public class GoogleMapImageManager : MonoBehaviour {
 		int i = 0;
 		foreach (Gym gym in GymManager.Instance.gymList)
 		{
-			if (i == 0)
-			{
+			//if (i == 0)
+			//{
+				/*
 			GoogleMapLocation location = new GoogleMapLocation();
 			GoogleMapMarker marker = new GoogleMapMarker();
 			location.latitude = gym.GymLat;
@@ -30,6 +32,7 @@ public class GoogleMapImageManager : MonoBehaviour {
 			{
 				termsList.Add(value);
 			}*/
+				/*
 			locationsList.Add(location);
 			
 			// You can convert it back to an array if you would like to
@@ -38,9 +41,12 @@ public class GoogleMapImageManager : MonoBehaviour {
 			marker.locations = locations;
 			//marker.locations[0] = location;
 			map.markers[i] = marker;
+			*/
+
+				//testMap.CreateMarker (gym.GymName, gym.GymLong, gym.GymLat);
 
 			i++;
-			}
+			//}
 		}
 		map.Refresh ();
 	}

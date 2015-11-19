@@ -165,13 +165,52 @@
      <Compile Include="Assets\Scripts\Structs\FacebookUserDataStruct.cs" />
      <Compile Include="Assets\Scripts\Util.cs" />
      <Compile Include="Assets\Scripts\Utils\CoroutineWithData.cs" />
+     <Compile Include="Assets\TestScripts\TestMap.cs" />
+     <Compile Include="Assets\UnitySlippyMap\GUI\GUI.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\CameraFacingBillboard.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\GeoHelpers.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\JobManager\Job.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\JobManager\JobManager.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\MD5.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\MaxRectsBinPack.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\Profiler.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\SQLite\DataTable.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\SQLite\SqliteDatabase.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\SRIDReader.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\SharedMaterialManager.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\TextureBogusExtension.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\UnityThreading\Dispatcher.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\UnityThreading\Task.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\UnityThreading\TaskDistributer.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\UnityThreading\Thread.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\UnityThreading\UnityThreadHelper.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\VirtualEarth\Metadata.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\VirtualEarth\TileSystem.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Helpers\WMS\WMS111.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Input\Input.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Layers\DBTileLayerBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Layers\LayerBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Layers\MBTilesLayerBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Layers\OSMTileLayerBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Layers\TileLayerBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Layers\VirtualEarthTileLayerBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Layers\WMSTileLayerBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Layers\WebTileLayerBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Map\MapBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Map\TileBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Map\TileDownloaderBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Markers\LocationMarkerBehaviour.cs" />
+     <Compile Include="Assets\UnitySlippyMap\Markers\MarkerBehaviour.cs" />
      <Compile Include="Assets\Vuforia Video Playback\Scripts\VideoPlaybackBehaviour.cs" />
      <Compile Include="Assets\Vuforia Video Playback\Scripts\VideoPlayerHelper.cs" />
      <Compile Include="Assets\World.cs" />
+     <None Include="Assets\UnitySlippyMap\Dll\ProjNet.1.2\ProjNet.xml" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\UnitySlippyMap\Resources\Shaders\SomianUnlitTransparent.shader" />
      <None Include="Assets\GoogleMaps\README.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\StreamingAssets\build_info.txt" />
+     <None Include="Assets\UnitySlippyMap\Resources\SRID.txt" />
      <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
      <None Include="Assets\Facebook\Scripts\Canvas\Resources\JSSDKBindings.txt" />
  <Reference Include="UnityEngine.UI">
@@ -182,6 +221,9 @@
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="ProjNet">
+ <HintPath>C:/Users/Trobface/Documents/UnityProjects/Projects/Fitness_Prototype/Assets/UnitySlippyMap/Dll/ProjNet.1.2/ProjNet.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
