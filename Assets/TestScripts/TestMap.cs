@@ -172,7 +172,7 @@ public class TestMap : MonoBehaviour
 		map.InputDelegate += UnitySlippyMap.Input.MapInput.BasicTouchAndKeyboard;
 		map.CurrentZoom = 15.0f;
 		// 9 rue Gentil, Lyon
-		map.CenterWGS84 = new double[2] { 4.83527, 45.76487 };
+		map.CenterWGS84 = new double[2] { 11.30658, 55.4013 };
 		map.UsesLocation = true;
 		map.InputsEnabled = true;
 		map.ShowsGUIControls = true;
@@ -262,38 +262,9 @@ public class TestMap : MonoBehaviour
 		int i = 0;
 		foreach (Gym gym in GymManager.Instance.gymList)
 		{
-			//if (i == 0)
-			//{
-			/*
-			GoogleMapLocation location = new GoogleMapLocation();
-			GoogleMapMarker marker = new GoogleMapMarker();
-			location.latitude = gym.GymLat;
-			location.longitude = gym.GymLong;
-			marker.size = GoogleMapMarker.GoogleMapMarkerSize.Mid;
-			marker.color = GoogleMapColor.black;
-			//marker.label = gym.GymName;
-			marker.label = "1";
-
-			List<GoogleMapLocation> locationsList = new List<GoogleMapLocation>();
-			/*for (GoogleMapLocation location = 0; runs < 400; runs++)
-			{
-				termsList.Add(value);
-			}*/
-			/*
-			locationsList.Add(location);
-			
-			// You can convert it back to an array if you would like to
-			GoogleMapLocation[] locations = locationsList.ToArray();
-
-			marker.locations = locations;
-			//marker.locations[0] = location;
-			map.markers[i] = marker;
-			*/
-			
-			CreateMarker (gym.GymName, gym.GymLong, gym.GymLat);
+			CreateMarker (gym.GymID, gym.GymLong, gym.GymLat);
 			
 			i++;
-			//}
 		}
 		
 		if (error == false)
@@ -381,7 +352,7 @@ public class TestMap : MonoBehaviour
 		go.transform.localScale = new Vector3(0.70588235294118f, 1.0f, 1.0f);
 		go.transform.localScale /= 7.0f;
 		go.AddComponent<CameraFacingBillboard>().Axis = Vector3.up;
-		
+		//go.GetComponent<BoxCollider> ().center.Set (0f, .1f, .5f);
 		GameObject markerGO;
 		markerGO = Instantiate(go) as GameObject;
 		map.CreateMarker<MarkerBehaviour>(st, new double[2] { dub1, dub2 }, markerGO);

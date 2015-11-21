@@ -24,7 +24,7 @@ public class CreateMachineScrollList: MonoBehaviour {
 		//PopulateList ();
 	}
 	
-	public void PrepareFriendList(Gym gym) {
+	public void PrepareMachineList(Gym gym) {
 		itemList.Clear();
 		foreach (var machine in gym.machineList) {
 			MachineItem item = new MachineItem();
@@ -45,15 +45,15 @@ public class CreateMachineScrollList: MonoBehaviour {
 			//          button.button.onClick = item.thingToDo;
 			newButton.transform.SetParent (contentPanel);
 			if (Screen.height <= 400)
-			{newButton.GetComponent <LayoutElement>().minHeight = 50f;}
-			else if(Screen.height > 400 && Screen.height <= 800)
-			{newButton.GetComponent <LayoutElement>().minHeight = 80f;}
+			{newButton.GetComponent <LayoutElement>().minWidth = 100f;}
+			else if(Screen.height > 400 && Screen.height <= 120)
+			{newButton.GetComponent <LayoutElement>().minWidth = 140f;}
 			else if(Screen.height > 800 && Screen.height <= 1200)
-			{newButton.GetComponent <LayoutElement>().minHeight = 100f;}
+			{newButton.GetComponent <LayoutElement>().minWidth = 160f;}
 			else if(Screen.height > 1200 && Screen.height <= 1600)
-			{newButton.GetComponent <LayoutElement>().minHeight = 120f;}
+			{newButton.GetComponent <LayoutElement>().minWidth = 180f;}
 			else if(Screen.height > 1600 && Screen.height <= 1900)
-			{newButton.GetComponent <LayoutElement>().minHeight = 140f;}
+			{newButton.GetComponent <LayoutElement>().minWidth = 200f;}
 			//newButton.GetComponent<RectTransform>().localScale = new Vector3(1f,1f,1f);﻿
 		}
 	}

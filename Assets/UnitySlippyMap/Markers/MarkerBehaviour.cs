@@ -142,6 +142,12 @@ namespace UnitySlippyMap.Markers
 		}
 	
 	#endregion
+
+
+		/*
+		void OnMouseDown() {
+			print ("MouseDown");
+		}*/
 	
 	#region Public methods
 	

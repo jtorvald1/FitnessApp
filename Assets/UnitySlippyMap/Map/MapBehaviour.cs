@@ -1249,7 +1249,13 @@ namespace UnitySlippyMap.Map
 			go.transform.localPosition = Vector3.zero;
 		
 			T marker = markerObject.AddComponent<T> ();
-		
+			//go.AddComponent<GymMarker> ();
+			GymMarker mark = go.AddComponent<GymMarker> ();
+			//mark.bc.center = new Vector3(0f, .1f, .5f);
+			go.GetComponent<BoxCollider> ().center = new Vector3(0f, .1f, .5f);
+			mark.gymID = name;
+			
+
 			// setup the marker
 			marker.Map = this;
 			marker.CoordinatesWGS84 = coordinatesWGS84;
