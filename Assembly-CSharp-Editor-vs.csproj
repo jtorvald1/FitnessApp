@@ -58,6 +58,10 @@
      <Compile Include="Assets\Facebook\Editor\iOS\PListParser.cs" />
      <Compile Include="Assets\Reporter\Editor\ReporterEditor.cs" />
      <Compile Include="Assets\Scripts\Editor\CreateGymEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Accordion\Editor\AccordionElementEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Editor\CanvasGroupActivator.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Editor\UIExtensionsMenuOptions.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Scripts\Editor\uGUITools.cs" />
      <None Include="Assets\UnitySlippyMap\Dll\ProjNet.1.2\ProjNet.xml" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\UnitySlippyMap\Resources\Shaders\SomianUnlitTransparent.shader" />
