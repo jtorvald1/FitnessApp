@@ -53,7 +53,7 @@ public class TestMap : MonoBehaviour
 
     private List<LayerBehaviour> layers;
     private int     currentLayerIndex = 0;
-	
+	/*
 	bool Toolbar(MapBehaviour map)
 	{
 		GUI.matrix = Matrix4x4.Scale(new Vector3(guiXScale, guiXScale, 1.0f));
@@ -150,7 +150,7 @@ public class TestMap : MonoBehaviour
 		GUILayout.EndArea();
 		
 		return pressed;
-	}
+	}*/
 	
 	private
 #if !UNITY_WEBPLAYER
@@ -177,7 +177,7 @@ public class TestMap : MonoBehaviour
 		map.InputsEnabled = true;
 		map.ShowsGUIControls = true;
 
-		map.GUIDelegate += Toolbar;
+		//map.GUIDelegate += Toolbar;
 
         layers = new List<LayerBehaviour>();
 

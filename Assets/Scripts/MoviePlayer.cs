@@ -64,4 +64,16 @@ public class MoviePlayer : MonoBehaviour {
 		//function Start(){ GetComponent(RawImage).mainTexture.Play(); }
 	}
 */
+	
+	public void PlayMovieFromAddress (string address) {
+		
+		Handheld.PlayFullScreenMovie (address, Color.black, FullScreenMovieControlMode.CancelOnInput);
+	}
+
+	public void PlayCurrentExerciseVideo () {
+	string address = GymManager.Instance.currentExercise.ExerciseVideoPath;
+		
+		Handheld.PlayFullScreenMovie (address, Color.black, FullScreenMovieControlMode.CancelOnInput);
+	}
+
 }

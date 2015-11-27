@@ -260,6 +260,7 @@ public class FacebookManager : MonoBehaviour {
 		fbfriend = new FacebookFriend();
 		fbfriend.FriendID = id;
 		fbfriend.FriendName = name;
+		fbfriend.CheckedInGymID = "11";
 		facebookInfoStruct.UserFriends.Add(fbfriend);
 		//fbfriend.FriendProfilePic = FacebookGetFriendPicture (id);
 		FacebookGetFriendPicture (id);

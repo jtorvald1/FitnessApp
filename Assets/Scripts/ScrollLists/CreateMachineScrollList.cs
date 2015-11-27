@@ -46,7 +46,7 @@ public class CreateMachineScrollList: MonoBehaviour {
 			newButton.transform.SetParent (contentPanel);
 			if (Screen.height <= 400)
 			{newButton.GetComponent <LayoutElement>().minWidth = 100f;}
-			else if(Screen.height > 400 && Screen.height <= 120)
+			else if(Screen.height > 400 && Screen.height <= 800)
 			{newButton.GetComponent <LayoutElement>().minWidth = 140f;}
 			else if(Screen.height > 800 && Screen.height <= 1200)
 			{newButton.GetComponent <LayoutElement>().minWidth = 160f;}

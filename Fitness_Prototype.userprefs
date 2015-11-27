@@ -1,10 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Info holders\Machine.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Managers\FacebookManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Info holders\Machine.cs" Line="9" Column="27" />
-      <File FileName="Assets\Scripts\GymMarker.cs" Line="1" Column="1" />
-      <File FileName="Assets\TestScripts\TestMap.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UI Controllers\ExercisePanelController.cs" Line="22" Column="14" />
+      <File FileName="Assets\Scripts\Info holders\Machine.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Managers\GoogleMapImageManager.cs" Line="1" Column="1" />
       <File FileName="Assets\UnitySlippyMap\Map\MapBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets\UnitySlippyMap\Map\TileBehaviour.cs" Line="1" Column="1" />
@@ -12,8 +11,17 @@
       <File FileName="Assets\Scripts\Managers\UIManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollLists\CreateActiveFriendScrollList.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollLists\CreateFriendScrollList.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UI Views\GymPanelView.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollLists\CreateMachineScrollList.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UI Controllers\GymPanelView.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MoviePlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\GymManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ScrollLists\CreateExerciseScrollList.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ButtonScripts\ExerciseButtonScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Temp Misc\ScrollListSizeFixer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Temp Misc\BestFitWithoutCutting.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GymMarker.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Editor\CreateGymEditor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\FacebookManager.cs" Line="263" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -22,6 +30,15 @@
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\UnitySlippyMap\Map\MapBehaviour.cs" line="1256" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\UnitySlippyMap\Map\MapBehaviour.cs" line="1255" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\UnitySlippyMap\Map\MapBehaviour.cs" line="1260" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\MoviePlayer.cs" line="74" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\MoviePlayer.cs" line="76" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\MoviePlayer.cs" line="77" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Temp Misc\ScrollListSizeFixer.cs" line="12" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Temp Misc\ScrollListSizeFixer.cs" line="13" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Temp Misc\ScrollListSizeFixer.cs" line="14" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Editor\CreateGymEditor.cs" line="158" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Editor\CreateGymEditor.cs" line="157" />
+      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Editor\CreateGymEditor.cs" line="159" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -5,6 +5,10 @@ using System.Collections.Generic;
 public class GymManager : MonoBehaviour {
 
 	public List<Gym> gymList;
+	public Gym currentGym;
+	public Exercise currentExercise;
+	public string currentExerciseID;
+	public string currentExerciseVidPath;
 
 	#region Init
 	private static GymManager _instance;

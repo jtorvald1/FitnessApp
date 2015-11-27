@@ -3,6 +3,8 @@ using System.Collections;
 
 public class UIManager : MonoBehaviour {
 
+	public GameObject mapPanel;
+
 	#region Init
 	private static UIManager _instance;
 	public static UIManager Instance
@@ -44,17 +46,60 @@ public class UIManager : MonoBehaviour {
 
 	public void PrepareGymPanel (string gymID) {
 		Gym gym = GymManager.Instance.gymList.Find(item => item.GymID == gymID);
+		GymManager.Instance.currentGym = gym;
 		string gymName = gym.GymName;
 		string gymAddress = gym.GymAddress;
 		Sprite gymPic = gym.GymPicList[0];
 
 		GymPanelView gymView = GetComponent<GymPanelView>();
 		gymView.GeneratePanel (gymName, gymAddress, gymPic);
+		mapPanel.SetActive (false);
+		GameObject map = GameObject.Find ("[Map]");
+		map.SetActive (false);
 		//gameObject.GymPanelView.GeneratePanel ();
 
 		GetComponent<CreateActiveFriendScrollList>().PrepareFriendList(gym);
 
-		GetComponent<CreateMachineScrollList>().PrepareMachineList(gym);
+		GetComponent<CreateExerciseScrollList>().PrepareExerciseList(gym);
 	}
+
+	public void BackToGymPanel () {
+		Gym gym = GymManager.Instance.currentGym;
+		string gymName = gym.GymName;
+		string gymAddress = gym.GymAddress;
+		Sprite gymPic = gym.GymPicList[0];
+		
+		GymPanelView gymView = GetComponent<GymPanelView>();
+		gymView.GeneratePanel (gymName, gymAddress, gymPic);
+
+		ExercisePanelController exercisePanelController = GetComponent<ExercisePanelController>();
+		exercisePanelController.DeactivatePanel ();
+		//gameObject.GymPanelView.GeneratePanel ();
+		
+		GetComponent<CreateActiveFriendScrollList>().PrepareFriendList(gym);
+		
+		GetComponent<CreateExerciseScrollList>().PrepareExerciseList(gym);
+	}
+
+	public void PrepareExercisePanel (string exerciseID) {
+		Exercise exercise = GymManager.Instance.currentGym.exerciseList.Find(item => item.ExerciseID == exerciseID);
+		GymManager.Instance.currentExercise = exercise;
+		string exerciseName = exercise.ExerciseName;
+		string exerciseVidPath = exercise.ExerciseVideoPath;
+		Sprite exercisePic = exercise.exercisePic;
+		
+		ExercisePanelController exercisePanelController = GetComponent<ExercisePanelController>();
+		exercisePanelController.GeneratePanel (exerciseName, exerciseVidPath, exercisePic);
+
+		GymPanelView gymView = GetComponent<GymPanelView> ();
+		gymView.DeactivatePanel ();
+		//gameObject.GymPanelView.GeneratePanel ();
+		
+		//GetComponent<CreateActiveFriendScrollList>().PrepareFriendList(gym);
+		
+		//GetComponent<CreateMachineScrollList>().PrepareMachineList(gym);
+	}
+
+
 
 }
