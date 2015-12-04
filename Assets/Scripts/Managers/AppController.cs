@@ -1,18 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-public class GymManager : MonoBehaviour {
-
-	public List<Gym> gymList;
-	public Gym currentGym;
-	public Exercise currentExercise;
-	public string currentExerciseID;
-	public string currentExerciseVidPath;
+public class AppController : MonoBehaviour {
 
 	#region Init
-	private static GymManager _instance;
-	public static GymManager Instance
+	private static AppController _instance;
+	public static AppController Instance
 	{
 		get
 		{
@@ -49,8 +42,9 @@ public class GymManager : MonoBehaviour {
 	
 	}
 
-	public Gym GetGymByID(string gymID) {
-		Gym result = gymList.Find(x => x.GymID == gymID);
-		return result;
+	public void onFacebookInfoDone() {
+
+		MessageManager.Instance.RefreshMessages (FacebookManager.Instance.facebookInfoStruct.UserFriends);
+
 	}
 }

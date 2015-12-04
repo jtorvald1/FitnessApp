@@ -152,10 +152,14 @@
      <Compile Include="Assets\Scripts\Info holders\FacebookFriend.cs" />
      <Compile Include="Assets\Scripts\Info holders\Gym.cs" />
      <Compile Include="Assets\Scripts\Info holders\Machine.cs" />
+     <Compile Include="Assets\Scripts\Info holders\Message.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\Managers\AppController.cs" />
+     <Compile Include="Assets\Scripts\Managers\FacebookFriendManager.cs" />
      <Compile Include="Assets\Scripts\Managers\FacebookManager.cs" />
      <Compile Include="Assets\Scripts\Managers\GoogleMapImageManager.cs" />
      <Compile Include="Assets\Scripts\Managers\GymManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\MessageManager.cs" />
      <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
      <Compile Include="Assets\Scripts\MoviePlayer.cs" />
      <Compile Include="Assets\Scripts\Old\MovieDev.cs" />

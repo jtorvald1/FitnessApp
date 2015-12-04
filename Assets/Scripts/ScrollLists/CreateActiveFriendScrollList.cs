@@ -16,7 +16,7 @@ public class CreateActiveFriendScrollList : MonoBehaviour {
 		//PopulateList ();
 	}
 	
-	public void PrepareFriendList(Gym gym) {
+	public void PrepareFriendListCheckedIn(Gym gym) {
 		itemList.Clear();
 		foreach (var friend in FacebookManager.Instance.facebookInfoStruct.UserFriends) {
 
@@ -29,6 +29,20 @@ public class CreateActiveFriendScrollList : MonoBehaviour {
 				item.icon = friend.FriendProfilePic;
 				itemList.Add(item);
 			}
+		}
+		PopulateList ();
+	}
+
+	//Not used. Could probably combine this class with CreateFriendScrollList.
+	//Would need to somehow handle "Sample Button" and "Content Panel" assignment for different panels.
+	public void PrepareFriendListAll(){
+		itemList.Clear();
+		foreach (var friend in FacebookManager.Instance.facebookInfoStruct.UserFriends) {
+			FacebookFriendItem item = new FacebookFriendItem();
+			item.id = friend.FriendID;
+			item.name = friend.FriendName;
+			item.icon = friend.FriendProfilePic;
+			itemList.Add(item);
 		}
 		PopulateList ();
 	}

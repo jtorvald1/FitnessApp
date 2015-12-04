@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Facebook.Unity;
+using System.Collections.Generic;
 
 public class FacebookFriend : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class FacebookFriend : MonoBehaviour {
 	private string friendName;
 	private Sprite friendProfilePic;
 	private string checkedInGymID;
+	private List<Message> friendUnreadMessages;
 
 	/*
 	public FacebookFriend (string id, string name)
@@ -66,5 +68,9 @@ public class FacebookFriend : MonoBehaviour {
 	public string CheckedInGymID {
 		get {return this.checkedInGymID;}
 		set {checkedInGymID = value;}
+	}
+	public List<Message> FriendUnreadMessages {
+		get {return this.friendUnreadMessages;}
+		set {friendUnreadMessages = value;}
 	}
 }

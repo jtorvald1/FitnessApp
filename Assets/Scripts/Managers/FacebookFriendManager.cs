@@ -2,17 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GymManager : MonoBehaviour {
+public class FacebookFriendManager : MonoBehaviour {
 
-	public List<Gym> gymList;
-	public Gym currentGym;
-	public Exercise currentExercise;
-	public string currentExerciseID;
-	public string currentExerciseVidPath;
+	public List<FacebookFriend> facebookFriendsList;
+
 
 	#region Init
-	private static GymManager _instance;
-	public static GymManager Instance
+	private static FacebookFriendManager _instance;
+	public static FacebookFriendManager Instance
 	{
 		get
 		{
@@ -49,8 +46,8 @@ public class GymManager : MonoBehaviour {
 	
 	}
 
-	public Gym GetGymByID(string gymID) {
-		Gym result = gymList.Find(x => x.GymID == gymID);
+	public FacebookFriend GetFriendByID (string friendID) {
+		FacebookFriend result = facebookFriendsList.Find(x => x.FriendID == friendID);
 		return result;
 	}
 }

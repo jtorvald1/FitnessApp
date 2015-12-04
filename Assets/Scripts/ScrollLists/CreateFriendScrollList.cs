@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Could probably combine this class with CreateActiveFriendScrollList.
+//Would need to somehow handle "Sample Button" and "Content Panel" assignment for different panels.
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;

@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour {
 		map.SetActive (false);
 		//gameObject.GymPanelView.GeneratePanel ();
 
-		GetComponent<CreateActiveFriendScrollList>().PrepareFriendList(gym);
+		GetComponent<CreateActiveFriendScrollList>().PrepareFriendListCheckedIn(gym);
 
 		GetComponent<CreateExerciseScrollList>().PrepareExerciseList(gym);
 	}
@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour {
 		exercisePanelController.DeactivatePanel ();
 		//gameObject.GymPanelView.GeneratePanel ();
 		
-		GetComponent<CreateActiveFriendScrollList>().PrepareFriendList(gym);
+		GetComponent<CreateActiveFriendScrollList>().PrepareFriendListCheckedIn(gym);
 		
 		GetComponent<CreateExerciseScrollList>().PrepareExerciseList(gym);
 	}
@@ -100,6 +100,8 @@ public class UIManager : MonoBehaviour {
 		//GetComponent<CreateMachineScrollList>().PrepareMachineList(gym);
 	}
 
-
+	public void PrepareAllFriendsPanel() {
+		GetComponent<CreateFriendScrollList>().PrepareFriendList();
+	}
 
 }
