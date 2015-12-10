@@ -28,7 +28,7 @@ public class CreateFriendScrollList : MonoBehaviour {
 
 	public void PrepareFriendList() {
 		itemList.Clear();
-		foreach (var friend in FacebookManager.Instance.facebookInfoStruct.UserFriends) {
+		foreach (var friend in FacebookFriendManager.Instance.facebookFriendsList) {
 			FacebookFriendItem item = new FacebookFriendItem();
 			item.id = friend.FriendID;
 			item.name = friend.FriendName;

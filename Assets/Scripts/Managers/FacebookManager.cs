@@ -222,11 +222,12 @@ public class FacebookManager : MonoBehaviour {
 		url.LoadImageIntoTexture(textFb2);
 		Sprite sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
 		yield return sprite;
-		foreach (var friend in facebookInfoStruct.UserFriends) {
+		/*foreach (var friend in facebookInfoStruct.UserFriends) {
 			if (friend.FriendID == userID)
 				friend.FriendProfilePic = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
 				UserPic.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
-		}
+		}*/
+		FacebookFriendManager.Instance.SetFacebookFriendImage (userID, Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0)));
 	}
 
 	//IEnumerator UserImage()
@@ -261,7 +262,8 @@ public class FacebookManager : MonoBehaviour {
 		fbfriend.FriendID = id;
 		fbfriend.FriendName = name;
 		fbfriend.CheckedInGymID = "11";
-		facebookInfoStruct.UserFriends.Add(fbfriend);
+		//facebookInfoStruct.UserFriends.Add(fbfriend);
+		FacebookFriendManager.Instance.facebookFriendsList.Add (fbfriend);
 		//fbfriend.FriendProfilePic = FacebookGetFriendPicture (id);
 		FacebookGetFriendPicture (id);
 		//fbfriend.GetProfilePic ();
@@ -302,7 +304,8 @@ public class FacebookManager : MonoBehaviour {
 		var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
 		var friendList = new List<object>();
 		friendList = (List<object>)(dict["data"]);
-		facebookInfoStruct.UserFriends.Clear ();
+		//facebookInfoStruct.UserFriends.Clear ();
+		FacebookFriendManager.Instance.facebookFriendsList.Clear ();
 
 		/*
 		string temp = "";

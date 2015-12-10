@@ -18,7 +18,7 @@ public class CreateActiveFriendScrollList : MonoBehaviour {
 	
 	public void PrepareFriendListCheckedIn(Gym gym) {
 		itemList.Clear();
-		foreach (var friend in FacebookManager.Instance.facebookInfoStruct.UserFriends) {
+		foreach (var friend in FacebookFriendManager.Instance.facebookFriendsList) {
 
 			if (friend.CheckedInGymID == gym.gymID)
 			{
@@ -37,7 +37,7 @@ public class CreateActiveFriendScrollList : MonoBehaviour {
 	//Would need to somehow handle "Sample Button" and "Content Panel" assignment for different panels.
 	public void PrepareFriendListAll(){
 		itemList.Clear();
-		foreach (var friend in FacebookManager.Instance.facebookInfoStruct.UserFriends) {
+		foreach (var friend in FacebookFriendManager.Instance.facebookFriendsList) {
 			FacebookFriendItem item = new FacebookFriendItem();
 			item.id = friend.FriendID;
 			item.name = friend.FriendName;

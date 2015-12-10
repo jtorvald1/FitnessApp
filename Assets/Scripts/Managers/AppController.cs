@@ -44,7 +44,7 @@ public class AppController : MonoBehaviour {
 
 	public void onFacebookInfoDone() {
 
-		MessageManager.Instance.RefreshMessages (FacebookManager.Instance.facebookInfoStruct.UserFriends);
+		MessageManager.Instance.RefreshMessages (FacebookFriendManager.Instance.facebookFriendsList);
 
 	}
 }

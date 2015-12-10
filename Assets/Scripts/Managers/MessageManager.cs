@@ -46,9 +46,9 @@ public class MessageManager : MonoBehaviour {
 	
 	}
 
-	public void GetMessagesFromServer(string facebookID) {
+	public void GetMessagesFromServer(string facebookUserID) {
 		/*
-		 * uses the user's FacebookID to get all messages that contain this user as Receiver.
+		 * uses the user's FacebookUserID to get all messages that contain this user as Receiver.
 		 * Should This method have the FacebookID passed to it?
 		 * Or should this method just tap into the Facebook Manager?
 		 * */

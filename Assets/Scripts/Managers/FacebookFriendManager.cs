@@ -46,6 +46,11 @@ public class FacebookFriendManager : MonoBehaviour {
 	
 	}
 
+	public void SetFacebookFriendImage (string friendID, Sprite image) {
+		FacebookFriend friend = GetFriendByID (friendID);
+		friend.FriendProfilePic = image;
+	}
+
 	public FacebookFriend GetFriendByID (string friendID) {
 		FacebookFriend result = facebookFriendsList.Find(x => x.FriendID == friendID);
 		return result;
