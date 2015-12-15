@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent (typeof (MessageFactory))]
 public class MessageManager : MonoBehaviour {
-
+	
 	public List<Message> unreadMessagesList;
+	private MessageFactory messageFactory;
 
 
 	#region Init
@@ -71,9 +73,34 @@ public class MessageManager : MonoBehaviour {
 
 	}
 
-	public void sendNewMessage(string message){
+	public void SendNewMessage(Message message){
 
 
 
+	}
+
+	public void ReadMessage(string friendID) {
+
+		foreach (Message message in GetMessagesBySenderID(friendID)) {
+			unreadMessagesList.Remove (message);
+		}
+
+	}
+
+	public List<Message> GetMessagesBySenderID(string friendID) {
+		List<Message> result = new List<Message>();
+		foreach (Message message in unreadMessagesList) {
+			if (message.senderID == friendID)
+				result.Add(message);
+		}
+		return result;
+	}
+
+	public void CreateNewAppMessage(string senderID) {
+		Message message = messageFactory.CreateMessage (senderID, "receiverID", "messageText");
+		SendNewMessage (message);
+	}
+
+	public void poop(){
 	}
 }
