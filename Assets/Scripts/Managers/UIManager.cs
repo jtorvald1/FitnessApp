@@ -1,9 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour {
 
+	//All Panels
+	public List<GameObject> allPanelsList;
+
+	//Map members
 	public GameObject mapPanel;
+
+	//Messages members
+	public Image messageCountImage;
+	public Text messageCountText;
+
+	//Friend buttons
+	public List<SampleButton> buttonList = new List<SampleButton>();
 
 	#region Init
 	private static UIManager _instance;
@@ -41,6 +54,40 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//Update message icons
+		if (MessageManager.Instance.unreadMessagesList.Count > 0) {
+			messageCountImage.enabled = true;
+			messageCountText.enabled = true;
+		} else { 
+			messageCountImage.enabled = false;
+			messageCountText.enabled = false;
+		}
+		if (MessageManager.Instance.unreadMessagesList.Count < 10)
+			messageCountText.text = MessageManager.Instance.unreadMessagesList.Count.ToString ();
+		else
+			messageCountText.text = "9+";
+
+		//Update message icons on friend buttons
+		foreach (SampleButton button in buttonList) {
+			
+			if (button.unreadMessagesCount > 0) {
+				button.messagesCountImage.enabled = true;
+				Text text = button.messagesCountImage.GetComponentInChildren<Text> ();
+				text.enabled = true;
+			} else { 
+				button.messagesCountImage.enabled = false;
+				Text text = button.messagesCountImage.GetComponentInChildren<Text> ();
+				text.enabled = false;
+			}
+			if (button.unreadMessagesCount < 10) {
+				Text text = button.messagesCountImage.GetComponentInChildren<Text> ();
+				text.text = button.unreadMessagesCount.ToString (); 
+			} else {
+				Text text = button.messagesCountImage.GetComponentInChildren<Text> ();
+				text.text = "9+";
+			}
+		}
 	
 	}
 
@@ -102,6 +149,19 @@ public class UIManager : MonoBehaviour {
 
 	public void PrepareAllFriendsPanel() {
 		GetComponent<CreateFriendScrollList>().PrepareFriendList();
+		foreach (GameObject panel in allPanelsList) {
+			panel.SetActive(false);
+			if (gameObject.name == "All Friends Panel")
+				gameObject.SetActive(true);
+		}
+	}
+
+	public void PrepareMapPanel() {
+		foreach (GameObject panel in allPanelsList) {
+			panel.SetActive(false);
+			if (gameObject.name == "Login Panel")
+				gameObject.SetActive(true);
+		}
 	}
 
 }

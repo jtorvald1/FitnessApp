@@ -27,6 +27,7 @@ public class CreateActiveFriendScrollList : MonoBehaviour {
 				item.id = friend.FriendID;
 				item.name = friend.FriendName;
 				item.icon = friend.FriendProfilePic;
+				item.messagesCount = friend.friendUnreadMessages.Count;
 				itemList.Add(item);
 			}
 		}
@@ -42,29 +43,35 @@ public class CreateActiveFriendScrollList : MonoBehaviour {
 			item.id = friend.FriendID;
 			item.name = friend.FriendName;
 			item.icon = friend.FriendProfilePic;
+			item.messagesCount = friend.friendUnreadMessages.Count;
 			itemList.Add(item);
 		}
 		PopulateList ();
 	}
 	
 	void PopulateList () {
+		UIManager.Instance.buttonList.Clear ();
 		foreach (var item in itemList) {
 			GameObject newButton = Instantiate (sampleButton) as GameObject;
 			SampleButton button = newButton.GetComponent <SampleButton> ();
 			button.nameLabel.text = item.name;
 			button.icon.sprite = item.icon;
+			button.unreadMessagesCount = item.messagesCount;
 			//          button.button.onClick = item.thingToDo;
+			UIManager.Instance.buttonList.Add(button);
 			newButton.transform.SetParent (contentPanel);
 			if (Screen.height <= 400)
 			{newButton.GetComponent <LayoutElement>().minHeight = 50f;}
 			else if(Screen.height > 400 && Screen.height <= 800)
-			{newButton.GetComponent <LayoutElement>().minHeight = 80f;}
-			else if(Screen.height > 800 && Screen.height <= 1200)
 			{newButton.GetComponent <LayoutElement>().minHeight = 100f;}
+			else if(Screen.height > 800 && Screen.height <= 1200)
+			{newButton.GetComponent <LayoutElement>().minHeight = 150f;}
 			else if(Screen.height > 1200 && Screen.height <= 1600)
-			{newButton.GetComponent <LayoutElement>().minHeight = 120f;}
+			{newButton.GetComponent <LayoutElement>().minHeight = 200f;}
 			else if(Screen.height > 1600 && Screen.height <= 1900)
-			{newButton.GetComponent <LayoutElement>().minHeight = 140f;}
+			{newButton.GetComponent <LayoutElement>().minHeight = 250f;}
+			else if(Screen.height > 1900)
+			{newButton.GetComponent <LayoutElement>().minHeight = 300f;}
 			//newButton.GetComponent<RectTransform>().localScale = new Vector3(1f,1f,1f);﻿
 		}
 	}

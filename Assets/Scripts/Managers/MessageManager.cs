@@ -61,6 +61,9 @@ public class MessageManager : MonoBehaviour {
 	}
 
 	public void RefreshMessages(List<FacebookFriend> userFriends) {
+		foreach (FacebookFriend friend in FacebookFriendManager.Instance.facebookFriendsList) {
+			friend.friendUnreadMessages.Clear();
+		}
 
 		foreach (Message message in unreadMessagesList) {
 			/*foreach (FacebookFriend friend in userFriends) {
@@ -72,7 +75,6 @@ public class MessageManager : MonoBehaviour {
 
 			FacebookFriend friend = FacebookFriendManager.Instance.GetFriendByID(message.senderID);
 			if(friend != null) {
-				friend.friendUnreadMessages.Clear();
 				friend.FriendUnreadMessages.Add(message);
 			}
 		}
