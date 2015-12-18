@@ -258,7 +258,9 @@ public class FacebookManager : MonoBehaviour {
 
 	void CreateFacebookFriend(string id, string name)
 	{
-		fbfriend = new FacebookFriend();
+		GameObject go = new GameObject();
+		fbfriend = go.AddComponent<FacebookFriend>();
+		//fbfriend = new FacebookFriend();
 		fbfriend.FriendID = id;
 		fbfriend.FriendName = name;
 		fbfriend.CheckedInGymID = "11";
@@ -328,6 +330,7 @@ public class FacebookManager : MonoBehaviour {
 		}
 		//facebookInfoStruct.UserFriends = friendIDsFromFB;
 		FacebookGetUserPicture(facebookInfoStruct.UserID);
+		AppController.Instance.onFacebookInfoDone ();
 	}
 
 	private string getDataValueForKey(Dictionary<string, object> dict, string key) {

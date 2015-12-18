@@ -40,6 +40,8 @@ public class MessageManager : MonoBehaviour {
 	 
 	// Use this for initialization
 	void Start () {
+
+		messageFactory = GetComponent<MessageFactory> ();
 	
 	}
 	
@@ -67,15 +69,19 @@ public class MessageManager : MonoBehaviour {
 					friend.FriendUnreadMessages.Add(message);
 				}
 			}*/
+
 			FacebookFriend friend = FacebookFriendManager.Instance.GetFriendByID(message.senderID);
-			friend.FriendUnreadMessages.Add(message);
+			if(friend != null) {
+				friend.friendUnreadMessages.Clear();
+				friend.FriendUnreadMessages.Add(message);
+			}
 		}
 
 	}
 
 	public void SendNewMessage(Message message){
 
-
+		//unreadMessagesList.Add (message);
 
 	}
 
@@ -96,11 +102,9 @@ public class MessageManager : MonoBehaviour {
 		return result;
 	}
 
-	public void CreateNewAppMessage(string senderID) {
-		Message message = messageFactory.CreateMessage (senderID, "receiverID", "messageText");
+	public void CreateNewAppMessage(string senderID, string receiverID, string messageText) {
+		Message message;
+		message = messageFactory.CreateMessage (senderID, receiverID, messageText);
 		SendNewMessage (message);
-	}
-
-	public void poop(){
 	}
 }

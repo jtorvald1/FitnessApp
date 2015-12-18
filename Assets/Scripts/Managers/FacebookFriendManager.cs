@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class FacebookFriendManager : MonoBehaviour {
 
-	public List<FacebookFriend> facebookFriendsList;
+	public List<FacebookFriend> facebookFriendsList = new List<FacebookFriend>();
 
 
 	#region Init
@@ -54,5 +54,13 @@ public class FacebookFriendManager : MonoBehaviour {
 	public FacebookFriend GetFriendByID (string friendID) {
 		FacebookFriend result = facebookFriendsList.Find(x => x.FriendID == friendID);
 		return result;
+	}
+
+	public void PrintAllMessages() {
+		foreach (FacebookFriend friend in facebookFriendsList) {
+			foreach(Message message in friend.FriendUnreadMessages) {
+				print(message.message);
+			}
+		}
 	}
 }

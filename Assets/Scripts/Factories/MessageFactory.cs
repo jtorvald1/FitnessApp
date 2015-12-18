@@ -14,7 +14,12 @@ public class MessageFactory : MonoBehaviour {
 	}
 
 	public Message CreateMessage(string senderID, string receiverID, string messageText) {
-		Message message = new Message(senderID, receiverID, messageText);
+		GameObject go = new GameObject();
+		Message message = go.AddComponent<Message> ();
+		message.senderID = senderID;
+		message.receiverID = receiverID;
+		message.message = messageText;
+		//Message message = new Message(senderID, receiverID, messageText);
 		return message;
 	}
 }

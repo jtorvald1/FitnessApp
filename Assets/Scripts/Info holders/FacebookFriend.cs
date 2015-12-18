@@ -9,7 +9,7 @@ public class FacebookFriend : MonoBehaviour {
 	private string friendName;
 	private Sprite friendProfilePic;
 	private string checkedInGymID;
-	private List<Message> friendUnreadMessages;
+	public List<Message> friendUnreadMessages = new List<Message>();
 
 	/*
 	public FacebookFriend (string id, string name)
@@ -21,6 +21,8 @@ public class FacebookFriend : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+
+		//friendUnreadMessages = new List<Message>();
 	
 	}
 	
