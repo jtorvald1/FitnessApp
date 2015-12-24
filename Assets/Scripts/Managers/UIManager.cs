@@ -149,19 +149,25 @@ public class UIManager : MonoBehaviour {
 
 	public void PrepareAllFriendsPanel() {
 		GetComponent<CreateFriendScrollList>().PrepareFriendList();
-		foreach (GameObject panel in allPanelsList) {
-			panel.SetActive(false);
-			if (gameObject.name == "All Friends Panel")
-				gameObject.SetActive(true);
-		}
+		DisableAllPanels ();
+		EnablePanel("All Friends Panel");
 	}
 
 	public void PrepareMapPanel() {
+		DisableAllPanels ();
+		EnablePanel("Login Panel");
+	}
+
+	public void DisableAllPanels() {
 		foreach (GameObject panel in allPanelsList) {
-			panel.SetActive(false);
-			if (gameObject.name == "Login Panel")
-				gameObject.SetActive(true);
+			panel.SetActive (false);
 		}
 	}
 
+	public void EnablePanel(string panelName) {
+		foreach (GameObject panel in allPanelsList) {
+			if (gameObject.name == panelName)
+				gameObject.SetActive(true);
+		}
+	}
 }

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Message : MonoBehaviour {
 
+	public string messageID;
 	public string senderID;
 	public string receiverID;
 	public string message;

@@ -50,6 +50,10 @@ public class MessageManager : MonoBehaviour {
 	
 	}
 
+	public void AddMessageToUnreadList(Message message) {
+		unreadMessagesList.Add (message);
+	}
+
 	public void GetMessagesFromServer(string facebookUserID) {
 		/*
 		 * uses the user's FacebookUserID to get all messages that contain this user as Receiver.
@@ -104,9 +108,13 @@ public class MessageManager : MonoBehaviour {
 		return result;
 	}
 
-	public void CreateNewAppMessage(string senderID, string receiverID, string messageText) {
+	public Message CreateNewAppMessage(string senderID, string receiverID, string messageText) {
 		Message message;
 		message = messageFactory.CreateMessage (senderID, receiverID, messageText);
-		SendNewMessage (message);
+		return message;
+	}
+
+	public void SendNewMessage() {
+		//Fill in later
 	}
 }
