@@ -97,7 +97,7 @@ public class ServerAccessHandler : MonoBehaviour {
 	}
 
 	public void SendMessageWrapper (string senderID, string receiverID, string messageText) {
-		StartCoroutine(SendMessage(senderID, receiverID, messageText);
+		StartCoroutine(SendMessage(senderID, receiverID, messageText));
 	}
 
 	IEnumerator SendMessage (string senderID, string receiverID, string messageText) {

@@ -62,9 +62,13 @@ public class MessageManager : MonoBehaviour {
 		 * */
 		//ServerInfoGetter.GetMessages (FacebookManager.Instance.facebookInfoStruct.UserID);
 		//RefreshMessages ();
+		ServerAccessHandler.Instance.GetMessagesWrapper (facebookUserID);
 	}
 
 	public void RefreshMessages(List<FacebookFriend> userFriends) {
+
+		GetMessagesFromServer (FacebookManager.Instance.facebookInfoStruct.UserID);
+
 		foreach (FacebookFriend friend in FacebookFriendManager.Instance.facebookFriendsList) {
 			friend.friendUnreadMessages.Clear();
 		}

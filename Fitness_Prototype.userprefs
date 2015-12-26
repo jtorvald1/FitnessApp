@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Managers\ServerAccessHandler.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Managers\MessageManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Managers\MessageManager.cs" Line="39" Column="12" />
-      <File FileName="Assets\Scripts\Managers\FacebookManager.cs" Line="163" Column="6" />
+      <File FileName="Assets\Scripts\Managers\ServerAccessHandler.cs" Line="100" Column="65" />
+      <File FileName="Assets\Scripts\Managers\MessageManager.cs" Line="87" Column="5" />
+      <File FileName="Assets\Scripts\Managers\FacebookManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollLists\CreateFriendScrollList.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Info holders\FacebookFriend.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Managers\GymManager.cs" Line="1" Column="1" />
@@ -12,7 +13,6 @@
       <File FileName="Assets\Scripts\Editor\CreateGymEditor.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Managers\UIManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollLists\CreateActiveFriendScrollList.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Managers\ServerAccessHandler.cs" Line="106" Column="34" />
       <File FileName="Assets\Scripts\Factories\MessageFactory.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Managers\FacebookFriendManager.cs" Line="1" Column="1" />
     </Files>
