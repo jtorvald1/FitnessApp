@@ -3,7 +3,21 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+[RequireComponent (typeof (PanelName))]
 public class UIManager : MonoBehaviour {
+
+	/*
+	public enum CurrentPanel
+	{
+		FacebookLoginPanel,
+		LoadingPanel,
+		GymPanel
+	};
+	*/
+	//Panel Organization
+	public PanelName panelName;
+	public GameObject currentPanel;
+	public GameObject lastPanel;
 
 	//All Panels
 	public List<GameObject> allPanelsList;
@@ -49,7 +63,7 @@ public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		panelName = GetComponent<PanelName> ();
 	}
 	
 	// Update is called once per frame
@@ -150,12 +164,17 @@ public class UIManager : MonoBehaviour {
 	public void PrepareAllFriendsPanel() {
 		GetComponent<CreateFriendScrollList>().PrepareFriendList();
 		DisableAllPanels ();
-		EnablePanel("All Friends Panel");
+		EnablePanel(panelName.AllFriendsPanel);
 	}
 
 	public void PrepareMapPanel() {
 		DisableAllPanels ();
-		EnablePanel("Login Panel");
+		EnablePanel(panelName.MapPanel);
+	}
+
+	public void PrepareFacebookLoginPanel () {
+		DisableAllPanels ();
+		EnablePanel (panelName.FacebookLoginPanel);
 	}
 
 	public void DisableAllPanels() {
@@ -164,10 +183,9 @@ public class UIManager : MonoBehaviour {
 		}
 	}
 
-	public void EnablePanel(string panelName) {
-		foreach (GameObject panel in allPanelsList) {
-			if (gameObject.name == panelName)
-				gameObject.SetActive(true);
-		}
+	public void EnablePanel(GameObject panel) {
+		panel.SetActive(true);
+		lastPanel = currentPanel;
+		currentPanel = panel;
 	}
 }

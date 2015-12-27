@@ -154,8 +154,9 @@
      <Compile Include="Assets\Scripts\Info holders\Gym.cs" />
      <Compile Include="Assets\Scripts\Info holders\Machine.cs" />
      <Compile Include="Assets\Scripts\Info holders\Message.cs" />
+     <Compile Include="Assets\Scripts\Info holders\PanelName.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\Managers\AppController.cs" />
+     <Compile Include="Assets\Scripts\Managers\AppManager.cs" />
      <Compile Include="Assets\Scripts\Managers\FacebookFriendManager.cs" />
      <Compile Include="Assets\Scripts\Managers\FacebookManager.cs" />
      <Compile Include="Assets\Scripts\Managers\GoogleMapImageManager.cs" />
@@ -295,17 +296,11 @@
      <None Include="Assets\UnitySlippyMap\Resources\SRID.txt" />
      <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
      <None Include="Assets\Facebook\Scripts\Canvas\Resources\JSSDKBindings.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="ProjNet">
  <HintPath>C:/Users/Trobface/Documents/UnityProjects/Projects/Fitness_Prototype/Assets/UnitySlippyMap/Dll/ProjNet.1.2/ProjNet.dll</HintPath>

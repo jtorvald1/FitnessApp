@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class FacebookManager : MonoBehaviour {
 
+	public Text FB_check;
 	public Text ErrorText;
 	public Image UserPic;
 	Texture2D UserImg;
@@ -60,6 +61,10 @@ public class FacebookManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+		
+		FB_check.text = "FB Status"+FB.IsLoggedIn;
 	
 	}
 
@@ -330,7 +335,7 @@ public class FacebookManager : MonoBehaviour {
 		}
 		//facebookInfoStruct.UserFriends = friendIDsFromFB;
 		FacebookGetUserPicture(facebookInfoStruct.UserID);
-		AppController.Instance.onFacebookInfoDone ();
+		AppManager.Instance.onFacebookInfoDone ();
 	}
 
 	private string getDataValueForKey(Dictionary<string, object> dict, string key) {
@@ -341,6 +346,9 @@ public class FacebookManager : MonoBehaviour {
 			return "";
 		}
 	}
-	
+
+	public bool CheckLoggedIn () {
+		return FB.IsLoggedIn;
+	}
 	
 }

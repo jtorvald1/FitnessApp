@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class MessageManager : MonoBehaviour {
 	
 	public List<Message> unreadMessagesList;
+	public List<Message> unsentMessagesList;
 	private MessageFactory messageFactory;
 
 
@@ -54,6 +55,14 @@ public class MessageManager : MonoBehaviour {
 		unreadMessagesList.Add (message);
 	}
 
+	public void RemoveMessageFromUnreadList(Message message) {
+		unreadMessagesList.Remove (message);
+	}
+
+	public void RemoveMessageFromUnsentList(Message message) {
+		unsentMessagesList.Remove (message);
+	}
+
 	public void GetMessagesFromServer(string facebookUserID) {
 		/*
 		 * uses the user's FacebookUserID to get all messages that contain this user as Receiver.
@@ -89,16 +98,22 @@ public class MessageManager : MonoBehaviour {
 
 	}
 
-	public void SendNewMessage(Message message){
-
-		//unreadMessagesList.Add (message);
-
+	public void TrySendOutgoingMessages(){
+		foreach (Message message in unsentMessagesList)
+			ServerAccessHandler.Instance.SendMessageWrapper (message);
 	}
 
-	public void ReadMessage(string friendID) {
+	public void PrepareNewOutgoingMessage(string senderID, string receiverID, string messageText) {
+		unsentMessagesList.Add (CreateNewAppMessage (senderID, receiverID, messageText));
+	}
+
+	public void ReadMessagesByFriendID(string friendID) {
 
 		foreach (Message message in GetMessagesBySenderID(friendID)) {
-			unreadMessagesList.Remove (message);
+
+			//Need any code to show the message?
+
+			RemoveMessageFromUnreadList (message);
 		}
 
 	}
@@ -116,9 +131,5 @@ public class MessageManager : MonoBehaviour {
 		Message message;
 		message = messageFactory.CreateMessage (senderID, receiverID, messageText);
 		return message;
-	}
-
-	public void SendNewMessage() {
-		//Fill in later
 	}
 }

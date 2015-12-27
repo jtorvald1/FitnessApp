@@ -76,31 +76,14 @@ public class ServerAccessHandler : MonoBehaviour {
 		}    
 	}
 
-	public void RetrieveMessagesByUser2() {
-		string url = REQUEST_URL;
-		WWWForm form = new WWWForm();
-		form.AddField("var1", "value1");
-		form.AddField("var2", "value2");
-		WWW www = new WWW(url, form);
-		StartCoroutine(WaitForRequest(www));
-	}
-	IEnumerator WaitForRequest(WWW www)
-	{
-		yield return www;
-			// check for errors
-			if (www.error == null)
-		{
-			Debug.Log("WWW Ok!: " + www.data);
-		} else {
-			Debug.Log("WWW Error: "+ www.error);
-		}    
+	public void SendMessageWrapper (Message message) {
+		StartCoroutine(SendMessage(message));
 	}
 
-	public void SendMessageWrapper (string senderID, string receiverID, string messageText) {
-		StartCoroutine(SendMessage(senderID, receiverID, messageText));
-	}
-
-	IEnumerator SendMessage (string senderID, string receiverID, string messageText) {
+	IEnumerator SendMessage (Message message) {
+		string senderID = message.senderID;
+		string receiverID = message.receiverID;
+		string messageText = message.message;
 		REQUEST_URL = SEND_MESSAGE_URL + "?senderID=" + senderID + "&receiverID=" + receiverID + "&messageText=" + messageText;
 		//string url = "http://example.com/script.php?var1=value2&amp;var2=value2";
 		WWW www = new WWW(REQUEST_URL);
@@ -109,6 +92,7 @@ public class ServerAccessHandler : MonoBehaviour {
 		if (www.error == null)
 		{
 			Debug.Log("WWW Ok!: " + www.data);
+			MessageManager.Instance.RemoveMessageFromUnsentList(message);
 		} else {
 			Debug.Log("WWW Error: "+ www.error);
 		}   
