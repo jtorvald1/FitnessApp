@@ -6,6 +6,7 @@ public class AppManager : MonoBehaviour {
 	enum AppState
 	{
 		startup,
+		login,
 		loading,
 		running
 	};
@@ -47,6 +48,11 @@ public class AppManager : MonoBehaviour {
 		appState = AppState.startup;
 	
 	}
+
+	public void SetStateStartup() { 
+		appState = AppState.startup;
+		FacebookManager.Instance.LoadingComplete = false;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -54,14 +60,29 @@ public class AppManager : MonoBehaviour {
 		if (appState == AppState.startup) {
 			if (FacebookManager.Instance.CheckLoggedIn() == false && UIManager.Instance.currentPanel != UIManager.Instance.panelName.FacebookLoginPanel) {
 				UIManager.Instance.PrepareFacebookLoginPanel();
+				appState = AppState.login;
 			}
-			if (FacebookManager.Instance.LoadingComplete() == false) {
+			else if (FacebookManager.Instance.CheckLoggedIn() == true && FacebookManager.Instance.LoadingComplete == false) {
+				FacebookManager.Instance.RetrieveUserInfo();
+				UIManager.Instance.PrepareLoadingPanel();
 				appState = AppState.loading;
 			}
 		}
 
-		if (appState == AppState.loading && UIManager.Instance.currentPanel!= UIManager.Instance.panelName.LoadingPanel) {
-			UIManager.Instance.PrepareLoadingPanel();
+		if (appState == AppState.login) {
+			if (FacebookManager.Instance.CheckLoggedIn() == true ) {
+				FacebookManager.Instance.RetrieveUserInfo();
+				UIManager.Instance.PrepareLoadingPanel();
+				appState = AppState.loading;
+			}
+		}
+
+		if (appState == AppState.loading) {
+			if (FacebookManager.Instance.LoadingComplete == true) {
+				MessageManager.Instance.RefreshMessages (FacebookFriendManager.Instance.facebookFriendsList);
+				UIManager.Instance.PrepareMapPanel();
+				appState = AppState.running;
+			}
 		}
 
 
@@ -70,7 +91,12 @@ public class AppManager : MonoBehaviour {
 
 	public void onFacebookInfoDone() {
 
-		MessageManager.Instance.RefreshMessages (FacebookFriendManager.Instance.facebookFriendsList);
+		//MessageManager.Instance.RefreshMessages (FacebookFriendManager.Instance.facebookFriendsList);
 
+	}
+
+	public void NotLoggedIn(){
+		UIManager.Instance.PrepareFacebookLoginPanel();
+		appState = AppState.login;
 	}
 }

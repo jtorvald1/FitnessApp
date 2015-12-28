@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class FacebookManager : MonoBehaviour {
 
+	private bool loadingComplete;
+
 	public Text FB_check;
 	public Text ErrorText;
 	public Image UserPic;
@@ -62,7 +64,6 @@ public class FacebookManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
 		
 		FB_check.text = "FB Status"+FB.IsLoggedIn;
 	
@@ -108,6 +109,31 @@ public class FacebookManager : MonoBehaviour {
 
 	private void AuthCallback (ILoginResult result) {
 		if (FB.IsLoggedIn) {
+			RetrieveUserInfo();
+		} else {
+			Debug.Log("User cancelled login");
+			AppManager.Instance.NotLoggedIn();
+		}
+	}
+
+	/*
+	public void FacebookLoginTEST(){
+		var perms = new List<string>(){"public_profile", "email", "user_friends"};
+		FB.LogInWithReadPermissions(perms, AuthCallbackTEST);
+	}
+	
+	private void AuthCallbackTEST (ILoginResult result) {
+		if (FB.IsLoggedIn) {
+			Debug.Log("Worked");
+		} else {
+			Debug.Log("User cancelled login");
+			AppManager.Instance.NotLoggedIn();
+		}
+	}
+	*/
+
+	public void RetrieveUserInfo () {
+		if (FB.IsLoggedIn) {
 			FB.API("/me?fields=name,email,gender", Facebook.Unity.HttpMethod.GET, APICallback);
 			FB.API ("me/friends?fields=installed,name,id", Facebook.Unity.HttpMethod.GET, APIFriendsListCallback);
 			var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
@@ -118,7 +144,8 @@ public class FacebookManager : MonoBehaviour {
 				Debug.Log(perm);
 			}
 		} else {
-			Debug.Log("User cancelled login");
+			Debug.Log("User Not Logged In");
+			AppManager.Instance.NotLoggedIn();
 		}
 	}
 
@@ -130,11 +157,21 @@ public class FacebookManager : MonoBehaviour {
 	}
 
 	public void FacebookPostLink(){
-		System.Uri uri1 = new System.Uri("http://google.com/");
-		string title = "This is the title";
-		string description = "This is the description";
-		System.Uri uri2 = new System.Uri ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
-		FacebookShareLink (uri1, title, description, uri2);
+		if (FB.IsLoggedIn) {
+
+			//Unfinished
+			FB.API("/me/permissions", HttpMethod.GET, CheckPermissionsAPICallback);
+
+			System.Uri uri1 = new System.Uri ("http://google.com/");
+			string title = "This is the title";
+			string description = "This is the description";
+			System.Uri uri2 = new System.Uri ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
+			FacebookShareLink (uri1, title, description, uri2);	
+		} else {
+			Debug.Log("User Not Logged In");
+			AppManager.Instance.NotLoggedIn();
+		}
+
 	}
 
 	void OnLoggedIn()
@@ -289,53 +326,67 @@ public class FacebookManager : MonoBehaviour {
 		
 		profile = Util.DeserializeJSONProfile(result.Text); 
 		*/
-		ErrorText.text=result.RawResult;
-		var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
-		string name = null;
-		string gender = null;
-		string userID = null;
-		string email = null;
-		name = (string)(dict ["name"]);
-		gender = (string)(dict ["gender"]);
-		userID = (string)(dict ["id"]);
-		//email = (string)(dict ["email"]);
+		if (result.Error != null) {
+			FacebookLogOut ();
+			AppManager.Instance.NotLoggedIn ();
+		} else {
+			ErrorText.text=result.RawResult;
+			var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
+			string name = null;
+			string gender = null;
+			string userID = null;
+			string email = null;
+			name = (string)(dict ["name"]);
+			gender = (string)(dict ["gender"]);
+			userID = (string)(dict ["id"]);
+			//email = (string)(dict ["email"]);
 
-		facebookInfoStruct.UserName = name;
-		facebookInfoStruct.UserGender = gender;
-		facebookInfoStruct.UserID = userID;
+			facebookInfoStruct.UserName = name;
+			facebookInfoStruct.UserGender = gender;
+			facebookInfoStruct.UserID = userID;
+		}
 	}
 
 	void APIFriendsListCallback(IGraphResult result)
 	{
-		ErrorText.text=result.RawResult;
-		var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
-		var friendList = new List<object>();
-		friendList = (List<object>)(dict["data"]);
-		//facebookInfoStruct.UserFriends.Clear ();
-		FacebookFriendManager.Instance.facebookFriendsList.Clear ();
+		if (result.Error != null) {
+			FacebookLogOut ();
+			AppManager.Instance.NotLoggedIn ();
+		} else {
+			ErrorText.text=result.RawResult;
+			var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
+			var friendList = new List<object>();
+			friendList = (List<object>)(dict["data"]);
+			//facebookInfoStruct.UserFriends.Clear ();
+			FacebookFriendManager.Instance.facebookFriendsList.Clear ();
 
-		/*
-		string temp = "";
-		foreach(Object str in friendList)
-		{
-			temp += str.ToString(); //maybe also + '\n' to put them on their own line.
-		}
-		*/
+			/*
+			string temp = "";
+			foreach(Object str in friendList)
+			{
+				temp += str.ToString(); //maybe also + '\n' to put them on their own line.
+			}
+			*/
 
-		int _friendCount = friendList.Count;
-		ErrorText.text = _friendCount.ToString ();
-		Debug.Log("Found friends on FB, _friendCount ... " +_friendCount);
-		List<string> friendIDsFromFB = new List<string>();
-		for (int i=0; i<_friendCount; i++) {
-			string friendFBID = getDataValueForKey( (Dictionary<string,object>)(friendList[i]), "id");
-			string friendName =    getDataValueForKey( (Dictionary<string,object>)(friendList[i]), "name");
-			Debug.Log( i +"/" +_friendCount +" " + "FriendFBID " +friendFBID +" " + "FriendName " +friendName);
-			friendIDsFromFB.Add(friendFBID);
-			CreateFacebookFriend(friendFBID, friendName);
+			int _friendCount = friendList.Count;
+			ErrorText.text = _friendCount.ToString ();
+			Debug.Log("Found friends on FB, _friendCount ... " +_friendCount);
+			List<string> friendIDsFromFB = new List<string>();
+			for (int i=0; i<_friendCount; i++) {
+				string friendFBID = getDataValueForKey( (Dictionary<string,object>)(friendList[i]), "id");
+				string friendName =    getDataValueForKey( (Dictionary<string,object>)(friendList[i]), "name");
+				Debug.Log( i +"/" +_friendCount +" " + "FriendFBID " +friendFBID +" " + "FriendName " +friendName);
+				friendIDsFromFB.Add(friendFBID);
+				CreateFacebookFriend(friendFBID, friendName);
+			}
+			//facebookInfoStruct.UserFriends = friendIDsFromFB;
+			FacebookGetUserPicture(facebookInfoStruct.UserID);
+			//AppManager.Instance.onFacebookInfoDone ();
+			loadingComplete = true;
 		}
-		//facebookInfoStruct.UserFriends = friendIDsFromFB;
-		FacebookGetUserPicture(facebookInfoStruct.UserID);
-		AppManager.Instance.onFacebookInfoDone ();
+	}
+
+	void CheckPermissionsAPICallback (IGraphResult result) {
 	}
 
 	private string getDataValueForKey(Dictionary<string, object> dict, string key) {
@@ -350,5 +401,14 @@ public class FacebookManager : MonoBehaviour {
 	public bool CheckLoggedIn () {
 		return FB.IsLoggedIn;
 	}
-	
+
+
+	public bool LoadingComplete {
+		get {
+			return this.loadingComplete;
+		}
+		set {
+			loadingComplete = value;
+		}
+	}
 }

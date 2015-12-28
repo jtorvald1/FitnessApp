@@ -177,6 +177,17 @@ public class UIManager : MonoBehaviour {
 		EnablePanel (panelName.FacebookLoginPanel);
 	}
 
+	public void PrepareLoadingPanel () {
+		DisableAllPanels ();
+		EnablePanel (panelName.LoadingPanel);
+	}
+
+	public void PreparePleaseLoginPanel () {
+		DisableAllPanels ();
+		EnablePanel (panelName.FacebookLoginPanel);
+		EnablePanel (panelName.LoadingPanel);
+	}
+
 	public void DisableAllPanels() {
 		foreach (GameObject panel in allPanelsList) {
 			panel.SetActive (false);
