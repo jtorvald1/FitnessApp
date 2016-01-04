@@ -48,7 +48,7 @@ public class CreateFriendScrollList : MonoBehaviour {
 	}
 	
 	void PopulateList () {
-		UIManager.Instance.buttonList.Clear ();
+		UIController.Instance.buttonList.Clear ();
 		foreach (var item in itemList) {
 			GameObject newButton = Instantiate (sampleButton) as GameObject;
 			SampleButton button = newButton.GetComponent <SampleButton> ();
@@ -56,7 +56,7 @@ public class CreateFriendScrollList : MonoBehaviour {
 			button.icon.sprite = item.icon;
 			button.unreadMessagesCount = item.messagesCount;
 			//          button.button.onClick = item.thingToDo;
-			UIManager.Instance.buttonList.Add(button);
+			UIController.Instance.buttonList.Add(button);
 			newButton.transform.SetParent (contentPanel);
 			if (Screen.height <= 400)
 			{newButton.GetComponent <LayoutElement>().minHeight = 50f;}

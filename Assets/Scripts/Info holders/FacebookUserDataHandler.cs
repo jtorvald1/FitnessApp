@@ -1,9 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
-public struct FacebookUserDataStruct {
-	
+public class FacebookUserDataHandler : MonoBehaviour {
+
 	private string userName;
 	private string userID;
 	private string userGender;
@@ -13,37 +13,47 @@ public struct FacebookUserDataStruct {
 	private string checkedInGymID;
 	private List<string> userPermissions;
 
-	/*
-	public FacebookInfoStruct () {
-		
-		userName = null;
-		userID = null;
-		userGender = null;
-		userProfilePic = null;
-		
+
+	// Use this for initialization
+	void Start () {
+
+		userFriends = new List<FacebookFriend>();
+		userPermissions = new List<string>();
+	
 	}
-	*/
+	
+	// Update is called once per frame
+	void Update () {
+
+		/*
+		userPermissions = FacebookManager.FacebookCurrentPermissions();
+		if (userPermissions != null){
+			// the list is ready: do whatever you want to do with it
+			
+		}*/
+	
+	}
 
 	public string UserName {
 		get { return this.userName; }
 		set { userName = value; }
 	}
-
+	
 	public string UserID {
 		get { return this.userID; }
 		set { userID = value; }
 	}
-
+	
 	public string UserGender {
 		get { return this.userGender; }
 		set { userGender = value; }
 	}
-
+	
 	public string UserEmail {
 		get { return this.userEmail; }
 		set { userEmail = value; }
 	}
-
+	
 	public Sprite UserProfilePic {
 		get { return this.userProfilePic; }
 		set { userProfilePic = value; }

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 [RequireComponent (typeof (PanelName))]
-public class UIManager : MonoBehaviour {
+public class UIController : MonoBehaviour {
 
 	/*
 	public enum CurrentPanel
@@ -33,8 +33,8 @@ public class UIManager : MonoBehaviour {
 	public List<SampleButton> buttonList = new List<SampleButton>();
 
 	#region Init
-	private static UIManager _instance;
-	public static UIManager Instance
+	private static UIController _instance;
+	public static UIController Instance
 	{
 		get
 		{

@@ -5,9 +5,10 @@ using Facebook.MiniJSON;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class FacebookManager : MonoBehaviour {
+public class FacebookInfoHandler : MonoBehaviour {
 
 	private bool loadingComplete;
+	private bool busy = false;
 
 	public Text FB_check;
 	public Text ErrorText;
@@ -21,8 +22,8 @@ public class FacebookManager : MonoBehaviour {
 	public List<string> Friendlist = new List<string>();
 
 	#region Init
-	private static FacebookManager _instance;
-	public static FacebookManager Instance
+	private static FacebookInfoHandler _instance;
+	public static FacebookInfoHandler Instance
 	{
 		get
 		{
@@ -59,13 +60,11 @@ public class FacebookManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		facebookInfoStruct.UserFriends = new List<FacebookFriend>();
+		facebookInfoStruct.UserPermissions = new List<string>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		
-		FB_check.text = "FB Status"+FB.IsLoggedIn;
 	
 	}
 
@@ -98,21 +97,21 @@ public class FacebookManager : MonoBehaviour {
 
 	public void FacebookLoginWithPublish(){
 		var perms = new List<string> (){"publish_actions"};
-		FB.LogInWithPublishPermissions (perms, AuthCallback);
+		FB.LogInWithPublishPermissions (perms, LoginCallback);
 	}
 
 
 	public void FacebookLoginWithRead(){
 		var perms = new List<string>(){"public_profile", "email", "user_friends"};
-		FB.LogInWithReadPermissions(perms, AuthCallback);
+		FB.LogInWithReadPermissions(perms, LoginCallback);
 	}
 
-	private void AuthCallback (ILoginResult result) {
+	private void LoginCallback (ILoginResult result) {
 		if (FB.IsLoggedIn) {
 			RetrieveUserInfo();
 		} else {
 			Debug.Log("User cancelled login");
-			AppManager.Instance.NotLoggedIn();
+			AppController.Instance.NotLoggedIn();
 		}
 	}
 
@@ -145,34 +144,33 @@ public class FacebookManager : MonoBehaviour {
 			}
 		} else {
 			Debug.Log("User Not Logged In");
-			AppManager.Instance.NotLoggedIn();
+			AppController.Instance.NotLoggedIn();
 		}
 	}
 
-	public void FacebookPost(){
-		var postData = 
-		new Dictionary<string, string>() {{"test post", "post 1"}};
-
-		FB.API("/me", Facebook.Unity.HttpMethod.POST, APICallback, postData);
-	}
-
-	public void FacebookPostLink(){
+	public void FacebookPrepareShareLink(){
 		if (FB.IsLoggedIn) {
 
-			//Unfinished
-			FB.API("/me/permissions", HttpMethod.GET, CheckPermissionsAPICallback);
+			//Unfinished (Unnecessary?) permission junk
+			//FacebookCheckpermissions();
+			//if(FacebookHasPostPermission())
 
-			System.Uri uri1 = new System.Uri ("http://google.com/");
-			string title = "This is the title";
-			string description = "This is the description";
-			System.Uri uri2 = new System.Uri ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
-			FacebookShareLink (uri1, title, description, uri2);	
+				System.Uri uri1 = new System.Uri ("http://google.com/");
+				string title = "This is the title";
+				string description = "This is the description";
+				System.Uri uri2 = new System.Uri ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
+				FacebookShareLink (uri1, title, description, uri2);	
 		} else {
 			Debug.Log("User Not Logged In");
-			AppManager.Instance.NotLoggedIn();
+			AppController.Instance.NotLoggedIn();
 		}
 
 	}
+
+	void FacebookShareLink(System.Uri fitnessWebsiteURL, string title, string description, System.Uri photoURL){
+		FB.ShareLink (fitnessWebsiteURL, title, description, photoURL);
+	}
+
 
 	void OnLoggedIn()
 	{
@@ -188,10 +186,6 @@ public class FacebookManager : MonoBehaviour {
 	
 	void FacebookLogOut(){
 		FB.LogOut ();
-	}
-
-	void FacebookShareLink(System.Uri fitnessWebsiteURL, string title, string description, System.Uri photoURL){
-		FB.ShareLink (fitnessWebsiteURL, title, description, photoURL);
 	}
 
 	public void FacebookGetFriendsInstalled(){
@@ -328,7 +322,7 @@ public class FacebookManager : MonoBehaviour {
 		*/
 		if (result.Error != null) {
 			FacebookLogOut ();
-			AppManager.Instance.NotLoggedIn ();
+			AppController.Instance.NotLoggedIn ();
 		} else {
 			ErrorText.text=result.RawResult;
 			var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
@@ -351,7 +345,7 @@ public class FacebookManager : MonoBehaviour {
 	{
 		if (result.Error != null) {
 			FacebookLogOut ();
-			AppManager.Instance.NotLoggedIn ();
+			AppController.Instance.NotLoggedIn ();
 		} else {
 			ErrorText.text=result.RawResult;
 			var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
@@ -386,7 +380,55 @@ public class FacebookManager : MonoBehaviour {
 		}
 	}
 
+	public void FacebookCheckpermissions() {
+		FB.API("/me/permissions", HttpMethod.GET, CheckPermissionsAPICallback);
+	}
+
 	void CheckPermissionsAPICallback (IGraphResult result) {
+		if (result.Error != null) {
+			FacebookLogOut ();
+			AppController.Instance.NotLoggedIn ();
+		} else {
+			facebookInfoStruct.UserPermissions.Clear ();
+			var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
+			var permissionsList = new List<object>();
+			permissionsList = (List<object>)(dict["data"]);
+			for (int i=0; i<permissionsList.Count; i++) {
+				string permission = getDataValueForKey( (Dictionary<string,object>)(permissionsList[i]), "permission");
+				Debug.Log(permission);
+				facebookInfoStruct.UserPermissions.Add(permission);
+			}
+
+		}
+	}
+
+	/*
+	public static List<string> FacebookCurrentPermissions(){
+		if (facebookInfoStruct.UserPermissions == null){ // friend list not ready:
+			// if CoroutGetFriends not running yet, start it:
+			if (!busy) StartCoroutine(CoroutGetFriends());
+		}
+		return facebookInfoStruct.UserPermissions; // return null if not ready
+	}
+
+	IEnumerator CoroutGetFriends(){
+		busy = true; // CoroutGetFriends is running now
+		if (!logged){ // not logged yet?
+			// chain to Login coroutine:
+			yield return StartCoroutine(Login());
+		}
+		// user logged in by now: get friends
+		...
+			busy = false; // CoroutGetFriends ended
+	}
+	*/
+
+	private bool FacebookHasPostPermission() {
+		//bool result = facebookInfoStruct.UserPermissions.Find(x => x. == "xy");
+		if (facebookInfoStruct.UserPermissions.Contains ("publish_actions")) {
+			return true;
+		}
+		return false;
 	}
 
 	private string getDataValueForKey(Dictionary<string, object> dict, string key) {

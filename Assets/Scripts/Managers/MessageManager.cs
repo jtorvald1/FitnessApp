@@ -71,12 +71,12 @@ public class MessageManager : MonoBehaviour {
 		 * */
 		//ServerInfoGetter.GetMessages (FacebookManager.Instance.facebookInfoStruct.UserID);
 		//RefreshMessages ();
-		ServerAccessHandler.Instance.GetMessagesWrapper (facebookUserID);
+		ServerInfoHandler.Instance.GetMessagesWrapper (facebookUserID);
 	}
 
 	public void RefreshMessages(List<FacebookFriend> userFriends) {
 
-		GetMessagesFromServer (FacebookManager.Instance.facebookInfoStruct.UserID);
+		GetMessagesFromServer (FacebookInfoHandler.Instance.facebookInfoStruct.UserID);
 
 		foreach (FacebookFriend friend in FacebookFriendManager.Instance.facebookFriendsList) {
 			friend.friendUnreadMessages.Clear();
@@ -100,7 +100,7 @@ public class MessageManager : MonoBehaviour {
 
 	public void TrySendOutgoingMessages(){
 		foreach (Message message in unsentMessagesList)
-			ServerAccessHandler.Instance.SendMessageWrapper (message);
+			ServerInfoHandler.Instance.SendMessageWrapper (message);
 	}
 
 	public void PrepareNewOutgoingMessage(string senderID, string receiverID, string messageText) {

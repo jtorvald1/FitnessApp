@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
 
@@ -25,6 +25,6 @@ public class ExerciseButtonScript : MonoBehaviour {
 	}
 
 	public void UIPrepareExercisePanel () {
-		UIManager.Instance.PrepareExercisePanel (id);
+		UIController.Instance.PrepareExercisePanel (id);
 	}
 }

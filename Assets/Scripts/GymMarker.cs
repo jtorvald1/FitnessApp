@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent (typeof (BoxCollider))]
@@ -21,6 +21,6 @@ public class GymMarker : MonoBehaviour {
 	void OnMouseDown() {
 		print ("MouseDown");
 		gameObject.GetComponent<Renderer> ().material.color = Color.red;
-		UIManager.Instance.PrepareGymPanel (gymID);
+		UIController.Instance.PrepareGymPanel (gymID);
 	}
 }

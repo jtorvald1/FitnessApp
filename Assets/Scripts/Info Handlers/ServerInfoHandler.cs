@@ -2,15 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ServerAccessHandler : MonoBehaviour {
+public class ServerInfoHandler : MonoBehaviour {
 
 	public string GET_MESSAGES_URL = "http://test-server.com/getmessages.php?";
 	public string SEND_MESSAGE_URL = "http://test-server.com/sendmessage.php?";
 	public string REQUEST_URL;// = "http://test-server.com/script.php";
 
+	private bool loadingComplete;
+
 	#region Init
-	private static ServerAccessHandler _instance;
-	public static ServerAccessHandler Instance
+	private static ServerInfoHandler _instance;
+	public static ServerInfoHandler Instance
 	{
 		get
 		{
@@ -53,6 +55,7 @@ public class ServerAccessHandler : MonoBehaviour {
 
 	IEnumerator GetMessages(string userID)
 	{
+		loadingComplete = false;
 		REQUEST_URL = GET_MESSAGES_URL + "?userID=" + userID;
 		//string url = "http://example.com/script.php?var1=value2&amp;var2=value2";
 		WWW www = new WWW(REQUEST_URL);
@@ -73,7 +76,8 @@ public class ServerAccessHandler : MonoBehaviour {
 			}
 		} else {
 			Debug.Log("WWW Error: "+ www.error);
-		}    
+		}
+		loadingComplete = true;
 	}
 
 	public void SendMessageWrapper (Message message) {
@@ -96,5 +100,14 @@ public class ServerAccessHandler : MonoBehaviour {
 		} else {
 			Debug.Log("WWW Error: "+ www.error);
 		}   
+	}
+
+	public bool LoadingComplete {
+		get {
+			return this.loadingComplete;
+		}
+		set {
+			loadingComplete = value;
+		}
 	}
 }
