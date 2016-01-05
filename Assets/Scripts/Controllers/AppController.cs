@@ -71,13 +71,15 @@ public class AppController : MonoBehaviour {
 			break;
 		case AppState.loadingFacebook:
 			if (FacebookInfoHandler.Instance.LoadingComplete == true) {
-				appState = AppState.running;
+				StateChange(AppState.loadingServer);
 			}
 			break;
 		case AppState.loadingServer:
 			if (ServerInfoHandler.Instance.LoadingComplete == true) {
-				appState = AppState.running;
+				StateChange (AppState.running);
 			}
+			break;
+		case AppState.running:
 			break;
 		}
 	

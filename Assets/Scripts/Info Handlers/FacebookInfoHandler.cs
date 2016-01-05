@@ -4,8 +4,11 @@ using Facebook.Unity;
 using Facebook.MiniJSON;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class FacebookInfoHandler : MonoBehaviour {
+
+	private delegate void SetPicture(string userID, Sprite pic);
 
 	private bool loadingComplete;
 	private bool busy = false;
@@ -91,10 +94,6 @@ public class FacebookInfoHandler : MonoBehaviour {
 		}
 	}
 
-	void FacebookActivateApp() {
-		FB.ActivateApp ();
-	}
-
 	public void FacebookLoginWithPublish(){
 		var perms = new List<string> (){"publish_actions"};
 		FB.LogInWithPublishPermissions (perms, LoginCallback);
@@ -108,28 +107,12 @@ public class FacebookInfoHandler : MonoBehaviour {
 
 	private void LoginCallback (ILoginResult result) {
 		if (FB.IsLoggedIn) {
-			RetrieveUserInfo();
+			//RetrieveUserInfo();
 		} else {
 			Debug.Log("User cancelled login");
 			AppController.Instance.NotLoggedIn();
 		}
 	}
-
-	/*
-	public void FacebookLoginTEST(){
-		var perms = new List<string>(){"public_profile", "email", "user_friends"};
-		FB.LogInWithReadPermissions(perms, AuthCallbackTEST);
-	}
-	
-	private void AuthCallbackTEST (ILoginResult result) {
-		if (FB.IsLoggedIn) {
-			Debug.Log("Worked");
-		} else {
-			Debug.Log("User cancelled login");
-			AppManager.Instance.NotLoggedIn();
-		}
-	}
-	*/
 
 	public void RetrieveUserInfo () {
 		if (FB.IsLoggedIn) {
@@ -171,19 +154,6 @@ public class FacebookInfoHandler : MonoBehaviour {
 		FB.ShareLink (fitnessWebsiteURL, title, description, photoURL);
 	}
 
-
-	void OnLoggedIn()
-	{
-		//Relies on that Menu class
-		/*
-		Util.Log("Logged in. ID: " + FB.UserId);
-		
-		// Reqest player info and profile picture                                                                           
-		FB.API("/me?fields=id,first_name,friends.limit(100).fields(first_name,id)", Facebook.HttpMethod.GET, APICallback);  
-		LoadPicture(Util.GetPictureURL("me", 128, 128),MyPictureCallback);
-		*/
-	}
-	
 	void FacebookLogOut(){
 		FB.LogOut ();
 	}
@@ -194,103 +164,32 @@ public class FacebookInfoHandler : MonoBehaviour {
 	}
 
 	//Right now gets called at end of GetFriendsCallback. Better spot for this?
-	public void FacebookGetUserPicture(string userID){
-		/*
-		WWW url = new WWW("https" + "://graph.facebook.com/me/picture?type=large"); 
-		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
-		url.LoadImageIntoTexture(textFb2);
-		UserImg = textFb2;
-		UserPic.sprite = Sprite.Create(UserImg, new Rect(0, 0, UserImg.width, UserImg.height), new Vector2(0,0));
-		*/
-
-		StartCoroutine (UserImage(userID));
-
-		//Using coroutinewithdata util
-		/*
-		CoroutineWithData cd = new CoroutineWithData(this, UserImage(userID));
-		yield return cd.coroutine;
-		return (Sprite) cd.result;
-		*/
+	public void FacebookGetUserPictureWrapper(string userID){
+		StartCoroutine (RetrieveUserImage(userID, SetProfilePic));
 	}
 
-	public void FacebookGetFriendPicture(string userID){
-		StartCoroutine (FriendImage(userID));
+	public void FacebookGetFriendPictureWrapper(string userID){
+		StartCoroutine (RetrieveUserImage(userID, SetFriendProfilePic));
 	}
 
-	public void FacebookGetUserPicture2(){
-		/*FB.API(FacebookUtil.GetPictureURL(userInfo.id, 128, 128), Facebook.HttpMethod.GET, (FBResult pictureResult) => {
-			if (pictureResult.Error != null) {
-				Debug.LogError("Error getting FB friend picture: " + pictureResult.Error);
-			}
-			else {
-				Util.GetPictureURL(
-				pictureURL = FacebookUtil.DeserializePictureURLString(pictureResult.Text);
-			}
-			finishedGettingPictureURL = true;
-		});*/
-	}
-
-
-	//UserImage() and FriendImage() SHOULD BE COMBINED TO A SINGLE FUNCTION THAT RETURNS THE IMAGE.
-	//BUT I DON'T KNOW HOW TO DO THAT WITH A COROUTINE
-	IEnumerator UserImage(string userID)
+	IEnumerator RetrieveUserImage(string userID, SetPicture setPicMethod)
 	{
 		//WWW url = FB.API ("me/picture?type=large", Facebook.Unity.HttpMethod.GET, APICallback);
 		WWW url = new WWW("https" + "://graph.facebook.com/" + userID + "/picture?type=large");
-		//WWW url = new WWW ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
 		yield return url;
 		url.LoadImageIntoTexture(textFb2);
 		Sprite sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
 		yield return sprite;
-		//UserPic.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
-		facebookInfoStruct.UserProfilePic = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
-	}
-	//UserImage() and FriendImage() SHOULD BE COMBINED TO A SINGLE FUNCTION THAT RETURNS THE IMAGE.
-	//BUT I DON'T KNOW HOW TO DO THAT WITH A COROUTINE
-	IEnumerator FriendImage(string userID)
-	{
-		//WWW url = FB.API ("me/picture?type=large", Facebook.Unity.HttpMethod.GET, APICallback);
-		WWW url = new WWW("https" + "://graph.facebook.com/" + userID + "/picture?type=large");
-		//WWW url = new WWW ("http://ladiesloot.com/wp-content/uploads/2015/05/smiley-face-1-4-15.png");
-		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
-		yield return url;
-		url.LoadImageIntoTexture(textFb2);
-		Sprite sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
-		yield return sprite;
-		/*foreach (var friend in facebookInfoStruct.UserFriends) {
-			if (friend.FriendID == userID)
-				friend.FriendProfilePic = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
-				UserPic.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
-		}*/
-		FacebookFriendManager.Instance.SetFacebookFriendImage (userID, Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0)));
+		setPicMethod (userID, sprite);
 	}
 
-	//IEnumerator UserImage()
-	//{
-		//FB.API("me/picture?type=med", Facebook.Unity.HttpMethod.GET, GetPicture);
-		/*
-		WWW url = new WWW("https" + "://graph.facebook.com/" + FB.UserId.ToString() + "/picture?type=large"); 
-		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
-		yield return url;
-		url.LoadImageIntoTexture(textFb2);
-		UserImg = textFb2;
-		*/
-
-		// Reqest player info and profile picture                                                                           
-		/*FB.API("/me?fields=id,first_name,friends.limit(100).fields(first_name,id)", Facebook.HttpMethod.GET, APICallback);  
-		LoadPicture(Util.GetPictureURL("me", 128, 128),MyPictureCallback); */   
-	//}
-
-	/*private void GetPicture(IResult result)
-	{
-		if (result.Error == null)
-		{          
-			Image img = UIFBProfilePic.GetComponent<Image>();
-			img.sprite = Sprite.Create(result.Texture, new Rect(0,0, 128, 128), new Vector2());         
-		}
-		
-	}*/
+	private void SetProfilePic(string userID, Sprite pic) {
+		facebookInfoStruct.UserProfilePic = pic;
+	}
+	private void SetFriendProfilePic(string userID, Sprite pic) {
+		FacebookFriendManager.Instance.SetFacebookFriendImage (userID, pic);
+	}
 
 	void CreateFacebookFriend(string id, string name)
 	{
@@ -303,28 +202,16 @@ public class FacebookInfoHandler : MonoBehaviour {
 		//facebookInfoStruct.UserFriends.Add(fbfriend);
 		FacebookFriendManager.Instance.facebookFriendsList.Add (fbfriend);
 		//fbfriend.FriendProfilePic = FacebookGetFriendPicture (id);
-		FacebookGetFriendPicture (id);
+		FacebookGetFriendPictureWrapper (id);
 		//fbfriend.GetProfilePic ();
 	}
 
 	void APICallback(IGraphResult result)                                                                                              
 	{                                                                                                                              
-		//Util.Log("APICallback");                                                                                                
-		/*if (result.Error != null)                                                                                                  
-		{                                                                                                                          
-			//Util.LogError(result.Error);                                                                                           
-			// Let's just try again                                                                                                
-			FB.API("/me?fields=id,first_name", Facebook.HttpMethod.GET, APICallback);     
-			return;                                                                                                                
-		}                                                                                                                          
-		
-		profile = Util.DeserializeJSONProfile(result.Text); 
-		*/
 		if (result.Error != null) {
 			FacebookLogOut ();
 			AppController.Instance.NotLoggedIn ();
 		} else {
-			ErrorText.text=result.RawResult;
 			var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
 			string name = null;
 			string gender = null;
@@ -333,7 +220,6 @@ public class FacebookInfoHandler : MonoBehaviour {
 			name = (string)(dict ["name"]);
 			gender = (string)(dict ["gender"]);
 			userID = (string)(dict ["id"]);
-			//email = (string)(dict ["email"]);
 
 			facebookInfoStruct.UserName = name;
 			facebookInfoStruct.UserGender = gender;
@@ -347,20 +233,10 @@ public class FacebookInfoHandler : MonoBehaviour {
 			FacebookLogOut ();
 			AppController.Instance.NotLoggedIn ();
 		} else {
-			ErrorText.text=result.RawResult;
 			var dict = Json.Deserialize(result.RawResult) as Dictionary<string,object>;
 			var friendList = new List<object>();
 			friendList = (List<object>)(dict["data"]);
-			//facebookInfoStruct.UserFriends.Clear ();
 			FacebookFriendManager.Instance.facebookFriendsList.Clear ();
-
-			/*
-			string temp = "";
-			foreach(Object str in friendList)
-			{
-				temp += str.ToString(); //maybe also + '\n' to put them on their own line.
-			}
-			*/
 
 			int _friendCount = friendList.Count;
 			ErrorText.text = _friendCount.ToString ();
@@ -374,8 +250,7 @@ public class FacebookInfoHandler : MonoBehaviour {
 				CreateFacebookFriend(friendFBID, friendName);
 			}
 			//facebookInfoStruct.UserFriends = friendIDsFromFB;
-			FacebookGetUserPicture(facebookInfoStruct.UserID);
-			//AppManager.Instance.onFacebookInfoDone ();
+			FacebookGetUserPictureWrapper(facebookInfoStruct.UserID);
 			loadingComplete = true;
 		}
 	}
@@ -402,29 +277,7 @@ public class FacebookInfoHandler : MonoBehaviour {
 		}
 	}
 
-	/*
-	public static List<string> FacebookCurrentPermissions(){
-		if (facebookInfoStruct.UserPermissions == null){ // friend list not ready:
-			// if CoroutGetFriends not running yet, start it:
-			if (!busy) StartCoroutine(CoroutGetFriends());
-		}
-		return facebookInfoStruct.UserPermissions; // return null if not ready
-	}
-
-	IEnumerator CoroutGetFriends(){
-		busy = true; // CoroutGetFriends is running now
-		if (!logged){ // not logged yet?
-			// chain to Login coroutine:
-			yield return StartCoroutine(Login());
-		}
-		// user logged in by now: get friends
-		...
-			busy = false; // CoroutGetFriends ended
-	}
-	*/
-
 	private bool FacebookHasPostPermission() {
-		//bool result = facebookInfoStruct.UserPermissions.Find(x => x. == "xy");
 		if (facebookInfoStruct.UserPermissions.Contains ("publish_actions")) {
 			return true;
 		}
