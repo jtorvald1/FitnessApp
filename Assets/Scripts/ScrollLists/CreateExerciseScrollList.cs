@@ -15,7 +15,7 @@ public class ExerciseItem {
 
 public class CreateExerciseScrollList: MonoBehaviour {
 	
-	public GameObject sampleButton;
+	public GameObject exerciseButton;
 	public List<ExerciseItem> itemList;
 	
 	public Transform contentPanel;
@@ -39,10 +39,10 @@ public class CreateExerciseScrollList: MonoBehaviour {
 	
 	void PopulateList () {
 		foreach (var item in itemList) {
-			GameObject newButton = Instantiate (sampleButton) as GameObject;
+			GameObject newButton = Instantiate (exerciseButton) as GameObject;
 
 			//SampleButton and ExerciseButton should be combined into one class
-			SampleButton button = newButton.GetComponent <SampleButton> ();
+			ScrollListButton button = newButton.GetComponent <ScrollListButton> ();
 			ExerciseButtonScript exerciseButtonScript = newButton.GetComponent<ExerciseButtonScript>();
 			button.nameLabel.text = item.name;
 			button.icon.sprite = item.icon;

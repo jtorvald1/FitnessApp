@@ -17,7 +17,7 @@ public class FacebookFriendItem {
 
 public class CreateFriendScrollList : MonoBehaviour {
 	
-	public GameObject sampleButton;
+	public GameObject friendButton;
 	public List<FacebookFriendItem> itemList;
 
 	
@@ -50,8 +50,8 @@ public class CreateFriendScrollList : MonoBehaviour {
 	void PopulateList () {
 		UIController.Instance.buttonList.Clear ();
 		foreach (var item in itemList) {
-			GameObject newButton = Instantiate (sampleButton) as GameObject;
-			SampleButton button = newButton.GetComponent <SampleButton> ();
+			GameObject newButton = Instantiate (friendButton) as GameObject;
+			ScrollListButton button = newButton.GetComponent <ScrollListButton> ();
 			button.nameLabel.text = item.name;
 			button.icon.sprite = item.icon;
 			button.unreadMessagesCount = item.messagesCount;

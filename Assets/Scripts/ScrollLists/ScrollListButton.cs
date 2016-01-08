@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class SampleButton : MonoBehaviour {
+public class ScrollListButton : MonoBehaviour {
 	
 	public Button button;
 	public Text nameLabel;

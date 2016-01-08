@@ -168,18 +168,18 @@
      <Compile Include="Assets\Scripts\Managers\MessageManager.cs" />
      <Compile Include="Assets\Scripts\MoviePlayer.cs" />
      <Compile Include="Assets\Scripts\Old\MovieDev.cs" />
-     <Compile Include="Assets\Scripts\SampleButton.cs" />
      <Compile Include="Assets\Scripts\ScreenManager.cs" />
      <Compile Include="Assets\Scripts\ScrollLists\CreateActiveFriendScrollList.cs" />
      <Compile Include="Assets\Scripts\ScrollLists\CreateExerciseScrollList.cs" />
      <Compile Include="Assets\Scripts\ScrollLists\CreateFriendScrollList.cs" />
      <Compile Include="Assets\Scripts\ScrollLists\CreateMachineScrollList.cs" />
      <Compile Include="Assets\Scripts\ScrollLists\CreateScrollList.cs" />
+     <Compile Include="Assets\Scripts\ScrollLists\ScrollListButton.cs" />
      <Compile Include="Assets\Scripts\Structs\FacebookUserDataStruct.cs" />
      <Compile Include="Assets\Scripts\Temp Misc\BestFitWithoutCutting.cs" />
      <Compile Include="Assets\Scripts\Temp Misc\ScrollListSizeFixer.cs" />
      <Compile Include="Assets\Scripts\UI Controllers\ExercisePanelController.cs" />
-     <Compile Include="Assets\Scripts\UI Controllers\GymPanelView.cs" />
+     <Compile Include="Assets\Scripts\UI Controllers\GymPanelController.cs" />
      <Compile Include="Assets\Scripts\Util.cs" />
      <Compile Include="Assets\Scripts\Utils\CoroutineWithData.cs" />
      <Compile Include="Assets\TestScripts\TestMap.cs" />
@@ -298,11 +298,17 @@
      <None Include="Assets\UnitySlippyMap\Resources\SRID.txt" />
      <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
      <None Include="Assets\Facebook\Scripts\Canvas\Resources\JSSDKBindings.txt" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="ProjNet">
  <HintPath>C:/Users/Trobface/Documents/UnityProjects/Projects/Fitness_Prototype/Assets/UnitySlippyMap/Dll/ProjNet.1.2/ProjNet.dll</HintPath>

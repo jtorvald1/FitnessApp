@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
@@ -39,7 +39,7 @@ public class CreateMachineScrollList: MonoBehaviour {
 	void PopulateList () {
 		foreach (var item in itemList) {
 			GameObject newButton = Instantiate (sampleButton) as GameObject;
-			SampleButton button = newButton.GetComponent <SampleButton> ();
+			ScrollListButton button = newButton.GetComponent <ScrollListButton> ();
 			button.nameLabel.text = item.name;
 			button.icon.sprite = item.icon;
 			//          button.button.onClick = item.thingToDo;

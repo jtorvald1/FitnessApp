@@ -19,7 +19,7 @@ public class ExerciseButtonScript : MonoBehaviour {
 	}
 
 	public void PrepareButtonEvent() {
-		SampleButton button = gameObject.GetComponent <SampleButton> ();
+		ScrollListButton button = gameObject.GetComponent <ScrollListButton> ();
 		UnityAction myAction = new UnityAction (UIPrepareExercisePanel);
 		button.button.onClick.AddListener(myAction);
 	}

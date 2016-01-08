@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class GymPanelView : MonoBehaviour {
+public class GymPanelController : MonoBehaviour {
 
 	public GameObject gymPanelView;
 	public Image gymImageView;

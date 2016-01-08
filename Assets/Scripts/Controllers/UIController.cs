@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ public class UIController : MonoBehaviour {
 	public Text messageCountText;
 
 	//Friend buttons
-	public List<SampleButton> buttonList = new List<SampleButton>();
+	public List<ScrollListButton> buttonList = new List<ScrollListButton>();
 
 	#region Init
 	private static UIController _instance;
@@ -83,7 +83,7 @@ public class UIController : MonoBehaviour {
 			messageCountText.text = "9+";
 
 		//Update message icons on friend buttons
-		foreach (SampleButton button in buttonList) {
+		foreach (ScrollListButton button in buttonList) {
 			
 			if (button.unreadMessagesCount > 0) {
 				button.messagesCountImage.enabled = true;
@@ -112,7 +112,7 @@ public class UIController : MonoBehaviour {
 		string gymAddress = gym.GymAddress;
 		Sprite gymPic = gym.GymPicList[0];
 
-		GymPanelView gymView = GetComponent<GymPanelView>();
+		GymPanelController gymView = GetComponent<GymPanelController>();
 		gymView.GeneratePanel (gymName, gymAddress, gymPic);
 		mapPanel.SetActive (false);
 		GameObject map = GameObject.Find ("[Map]");
@@ -130,7 +130,7 @@ public class UIController : MonoBehaviour {
 		string gymAddress = gym.GymAddress;
 		Sprite gymPic = gym.GymPicList[0];
 		
-		GymPanelView gymView = GetComponent<GymPanelView>();
+		GymPanelController gymView = GetComponent<GymPanelController>();
 		gymView.GeneratePanel (gymName, gymAddress, gymPic);
 
 		ExercisePanelController exercisePanelController = GetComponent<ExercisePanelController>();
@@ -152,7 +152,7 @@ public class UIController : MonoBehaviour {
 		ExercisePanelController exercisePanelController = GetComponent<ExercisePanelController>();
 		exercisePanelController.GeneratePanel (exerciseName, exerciseVidPath, exercisePic);
 
-		GymPanelView gymView = GetComponent<GymPanelView> ();
+		GymPanelController gymView = GetComponent<GymPanelController> ();
 		gymView.DeactivatePanel ();
 		//gameObject.GymPanelView.GeneratePanel ();
 		
