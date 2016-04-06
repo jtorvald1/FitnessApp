@@ -1,24 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ScrollLists\CreateExerciseScrollList.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Animation\ActiveFriendsSlideAnimationScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\Info Handlers\FacebookInfoHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Managers\MessageManager.cs" Line="1" Column="1" />
+      <File FileName="Fitness_Prototype.sln" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Animation\ActiveFriendsSlideAnimationScript.cs" Line="26" Column="23" />
+      <File FileName="Assets\Scripts\Controllers\AppController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Info holders\FacebookFriend.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Managers\GymManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Info holders\Message.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ScrollLists\CreateActiveFriendScrollList.cs" Line="61" Column="1" />
       <File FileName="Assets\Scripts\Managers\FacebookFriendManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Info holders\PanelName.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Structs\FacebookUserDataStruct.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Info holders\FacebookUserDataHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Helpers\FacebookPermissionsHelper.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Controllers\AppController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Info Handlers\ServerInfoHandler.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\UI Controllers\GymPanelController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ScrollLists\CreateExerciseScrollList.cs" Line="47" Column="1" />
-      <File FileName="Assets\Scripts\ScrollLists\CreateFriendScrollList.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ScrollLists\ScrollListButton.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controllers\UIController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Info holders\Gym.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\MessageManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Factories\MessageFactory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ScrollLists\CreateActiveFriendScrollList.cs" Line="19" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -37,24 +34,18 @@
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Editor\CreateGymEditor.cs" line="157" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Editor\CreateGymEditor.cs" line="159" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\FacebookManager.cs" line="378" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\FacebookFriendManager.cs" line="61" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\FacebookFriendManager.cs" line="60" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\ScrollLists\CreateActiveFriendScrollList.cs" line="46" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\ServerAccessHandler.cs" line="56" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\ServerAccessHandler.cs" line="58" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\ServerAccessHandler.cs" line="59" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\ServerAccessHandler.cs" line="61" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\ServerAccessHandler.cs" line="74" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\MessageManager.cs" line="74" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\FacebookManager.cs" line="431" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\FacebookManager.cs" line="429" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\FacebookManager.cs" line="384" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\FacebookManager.cs" line="387" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\FacebookManager.cs" line="399" />
       <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\Managers\FacebookManager.cs" line="156" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\ScrollLists\CreateExerciseScrollList.cs" line="47" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\ScrollLists\CreateExerciseScrollList.cs" line="42" />
-      <Breakpoint file="C:\Users\Trobface\Documents\UnityProjects\Projects\Fitness_Prototype\Assets\Scripts\ScrollLists\CreateExerciseScrollList.cs" line="41" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

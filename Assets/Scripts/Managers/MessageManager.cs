@@ -64,13 +64,6 @@ public class MessageManager : MonoBehaviour {
 	}
 
 	public void GetMessagesFromServer(string facebookUserID) {
-		/*
-		 * uses the user's FacebookUserID to get all messages that contain this user as Receiver.
-		 * Should This method have the FacebookID passed to it?
-		 * Or should this method just tap into the Facebook Manager?
-		 * */
-		//ServerInfoGetter.GetMessages (FacebookManager.Instance.facebookInfoStruct.UserID);
-		//RefreshMessages ();
 		ServerInfoHandler.Instance.GetMessagesWrapper (facebookUserID);
 	}
 
@@ -83,13 +76,6 @@ public class MessageManager : MonoBehaviour {
 		}
 
 		foreach (Message message in unreadMessagesList) {
-			/*foreach (FacebookFriend friend in userFriends) {
-				if(message.senderID == friend.FriendID)
-				{
-					friend.FriendUnreadMessages.Add(message);
-				}
-			}*/
-
 			FacebookFriend friend = FacebookFriendManager.Instance.GetFriendByID(message.senderID);
 			if(friend != null) {
 				friend.FriendUnreadMessages.Add(message);
@@ -110,9 +96,6 @@ public class MessageManager : MonoBehaviour {
 	public void ReadMessagesByFriendID(string friendID) {
 
 		foreach (Message message in GetMessagesBySenderID(friendID)) {
-
-			//Need any code to show the message?
-
 			RemoveMessageFromUnreadList (message);
 		}
 

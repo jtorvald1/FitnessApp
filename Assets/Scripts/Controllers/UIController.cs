@@ -5,15 +5,7 @@ using System.Collections.Generic;
 
 [RequireComponent (typeof (PanelName))]
 public class UIController : MonoBehaviour {
-
-	/*
-	public enum CurrentPanel
-	{
-		FacebookLoginPanel,
-		LoadingPanel,
-		GymPanel
-	};
-	*/
+	
 	//Panel Organization
 	public PanelName panelName;
 	public GameObject currentPanel;
@@ -117,7 +109,6 @@ public class UIController : MonoBehaviour {
 		mapPanel.SetActive (false);
 		GameObject map = GameObject.Find ("[Map]");
 		map.SetActive (false);
-		//gameObject.GymPanelView.GeneratePanel ();
 
 		GetComponent<CreateActiveFriendScrollList>().PrepareFriendListCheckedIn(gym);
 
@@ -135,7 +126,6 @@ public class UIController : MonoBehaviour {
 
 		ExercisePanelController exercisePanelController = GetComponent<ExercisePanelController>();
 		exercisePanelController.DeactivatePanel ();
-		//gameObject.GymPanelView.GeneratePanel ();
 		
 		GetComponent<CreateActiveFriendScrollList>().PrepareFriendListCheckedIn(gym);
 		
@@ -154,11 +144,6 @@ public class UIController : MonoBehaviour {
 
 		GymPanelController gymView = GetComponent<GymPanelController> ();
 		gymView.DeactivatePanel ();
-		//gameObject.GymPanelView.GeneratePanel ();
-		
-		//GetComponent<CreateActiveFriendScrollList>().PrepareFriendList(gym);
-		
-		//GetComponent<CreateMachineScrollList>().PrepareMachineList(gym);
 	}
 
 	public void PrepareAllFriendsPanel() {

@@ -12,17 +12,10 @@ public class FacebookInfoHandler : MonoBehaviour {
 
 	private bool loadingComplete;
 	private bool busy = false;
-
-	public Text FB_check;
-	public Text ErrorText;
-	public Image UserPic;
-	Texture2D UserImg;
-	public FacebookFriend fbfriend = new FacebookFriend();
+	private FacebookFriend fbfriend = new FacebookFriend();
 
 	//Struct to store Facebook info
 	public FacebookUserDataStruct facebookInfoStruct = new FacebookUserDataStruct();
-
-	public List<string> Friendlist = new List<string>();
 
 	#region Init
 	private static FacebookInfoHandler _instance;
@@ -107,7 +100,6 @@ public class FacebookInfoHandler : MonoBehaviour {
 
 	private void LoginCallback (ILoginResult result) {
 		if (FB.IsLoggedIn) {
-			//RetrieveUserInfo();
 		} else {
 			Debug.Log("User cancelled login");
 			AppController.Instance.NotLoggedIn();
@@ -133,11 +125,6 @@ public class FacebookInfoHandler : MonoBehaviour {
 
 	public void FacebookPrepareShareLink(){
 		if (FB.IsLoggedIn) {
-
-			//Unfinished (Unnecessary?) permission junk
-			//FacebookCheckpermissions();
-			//if(FacebookHasPostPermission())
-
 				System.Uri uri1 = new System.Uri ("http://google.com/");
 				string title = "This is the title";
 				string description = "This is the description";
@@ -158,12 +145,6 @@ public class FacebookInfoHandler : MonoBehaviour {
 		FB.LogOut ();
 	}
 
-	public void FacebookGetFriendsInstalled(){
-		FB.API ("me/friends?fields=installed", Facebook.Unity.HttpMethod.GET, APIFriendsListCallback);
-		//FB.API ("me?fields=id,name,picture", Facebook.Unity.HttpMethod.GET, APICallback);
-	}
-
-	//Right now gets called at end of GetFriendsCallback. Better spot for this?
 	public void FacebookGetUserPictureWrapper(string userID){
 		StartCoroutine (RetrieveUserImage(userID, SetProfilePic));
 	}
@@ -174,7 +155,6 @@ public class FacebookInfoHandler : MonoBehaviour {
 
 	IEnumerator RetrieveUserImage(string userID, SetPicture setPicMethod)
 	{
-		//WWW url = FB.API ("me/picture?type=large", Facebook.Unity.HttpMethod.GET, APICallback);
 		WWW url = new WWW("https" + "://graph.facebook.com/" + userID + "/picture?type=large");
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
 		yield return url;
@@ -195,15 +175,11 @@ public class FacebookInfoHandler : MonoBehaviour {
 	{
 		GameObject go = new GameObject();
 		fbfriend = go.AddComponent<FacebookFriend>();
-		//fbfriend = new FacebookFriend();
 		fbfriend.FriendID = id;
 		fbfriend.FriendName = name;
 		fbfriend.CheckedInGymID = "11";
-		//facebookInfoStruct.UserFriends.Add(fbfriend);
 		FacebookFriendManager.Instance.facebookFriendsList.Add (fbfriend);
-		//fbfriend.FriendProfilePic = FacebookGetFriendPicture (id);
 		FacebookGetFriendPictureWrapper (id);
-		//fbfriend.GetProfilePic ();
 	}
 
 	void APICallback(IGraphResult result)                                                                                              
@@ -239,7 +215,6 @@ public class FacebookInfoHandler : MonoBehaviour {
 			FacebookFriendManager.Instance.facebookFriendsList.Clear ();
 
 			int _friendCount = friendList.Count;
-			ErrorText.text = _friendCount.ToString ();
 			Debug.Log("Found friends on FB, _friendCount ... " +_friendCount);
 			List<string> friendIDsFromFB = new List<string>();
 			for (int i=0; i<_friendCount; i++) {
@@ -249,7 +224,6 @@ public class FacebookInfoHandler : MonoBehaviour {
 				friendIDsFromFB.Add(friendFBID);
 				CreateFacebookFriend(friendFBID, friendName);
 			}
-			//facebookInfoStruct.UserFriends = friendIDsFromFB;
 			FacebookGetUserPictureWrapper(facebookInfoStruct.UserID);
 			loadingComplete = true;
 		}

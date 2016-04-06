@@ -57,7 +57,6 @@ public class ServerInfoHandler : MonoBehaviour {
 	{
 		loadingComplete = false;
 		REQUEST_URL = GET_MESSAGES_URL + "?userID=" + userID;
-		//string url = "http://example.com/script.php?var1=value2&amp;var2=value2";
 		WWW www = new WWW(REQUEST_URL);
 		yield return www;
 		// check for errors
@@ -89,7 +88,6 @@ public class ServerInfoHandler : MonoBehaviour {
 		string receiverID = message.receiverID;
 		string messageText = message.message;
 		REQUEST_URL = SEND_MESSAGE_URL + "?senderID=" + senderID + "&receiverID=" + receiverID + "&messageText=" + messageText;
-		//string url = "http://example.com/script.php?var1=value2&amp;var2=value2";
 		WWW www = new WWW(REQUEST_URL);
 		yield return www;
 		// check for errors

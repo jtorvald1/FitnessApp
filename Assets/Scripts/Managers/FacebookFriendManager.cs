@@ -5,8 +5,7 @@ using System.Collections.Generic;
 public class FacebookFriendManager : MonoBehaviour {
 
 	public List<FacebookFriend> facebookFriendsList = new List<FacebookFriend>();
-
-
+	
 	#region Init
 	private static FacebookFriendManager _instance;
 	public static FacebookFriendManager Instance

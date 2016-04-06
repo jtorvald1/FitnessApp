@@ -21,8 +21,7 @@ public class CreateExerciseScrollList: MonoBehaviour {
 	public Transform contentPanel;
 	
 	void Start () {
-		//PrepareFriendList ();
-		//PopulateList ();
+
 	}
 	
 	public void PrepareExerciseList(Gym gym) {

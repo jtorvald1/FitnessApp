@@ -11,18 +11,8 @@ public class FacebookFriend : MonoBehaviour {
 	private string checkedInGymID;
 	public List<Message> friendUnreadMessages = new List<Message>();
 
-	/*
-	public FacebookFriend (string id, string name)
-	{
-		friendID = id;
-		friendName = name;
-	}
-	*/
-	
 	// Use this for initialization
 	void Start () {
-
-		//friendUnreadMessages = new List<Message>();
 	
 	}
 	
@@ -31,28 +21,6 @@ public class FacebookFriend : MonoBehaviour {
 	
 	}
 
-	//This API call (using the util class) WORKS to get data, and could be used to clean up FacebookManager.
-	//But it shouldn't be here. And you would have to deserialize the result to make it useable.
-	/*
-	public void GetProfilePic() {
-		Facebook.Unity.FB.API (Util.GetPictureURL (friendID, 96, 96), Facebook.Unity.HttpMethod.GET, this.FriendPictureCallback);
-	}
-
-	void FriendPictureCallback(IGraphResult result)
-		
-	{
-		if (result.Error != null)
-		{
-			Debug.LogError(result.Error);
-			return;
-		}
-		
-		//friendAvatarImage.image = result.Texture;
-		//result.= Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0,0));
-		Debug.Log (result.RawResult);
-	}
-	*/
-	
 	public string FriendName {
 		get { return this.friendName; }
 		set { friendName = value; }

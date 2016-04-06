@@ -19,7 +19,6 @@ public class MessageFactory : MonoBehaviour {
 		message.senderID = senderID;
 		message.receiverID = receiverID;
 		message.message = messageText;
-		//Message message = new Message(senderID, receiverID, messageText);
 		return message;
 	}
 }

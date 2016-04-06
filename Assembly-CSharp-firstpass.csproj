@@ -67,7 +67,6 @@
      <None Include="Assets\UnitySlippyMap\Dll\ProjNet.1.2\ProjNet.xml" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\UnitySlippyMap\Resources\Shaders\SomianUnlitTransparent.shader" />
-     <None Include="Assets\GoogleMaps\README.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\StreamingAssets\build_info.txt" />
      <None Include="Assets\UnitySlippyMap\Resources\SRID.txt" />

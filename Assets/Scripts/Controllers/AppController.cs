@@ -107,13 +107,6 @@ public class AppController : MonoBehaviour {
 		}
 		appState = newState; 
 	}
-	
-	
-	public void onFacebookInfoDone() {
-		
-		//MessageManager.Instance.RefreshMessages (FacebookFriendManager.Instance.facebookFriendsList);
-
-	}
 
 	public void NotLoggedIn(){
 		UIController.Instance.PrepareFacebookLoginPanel();

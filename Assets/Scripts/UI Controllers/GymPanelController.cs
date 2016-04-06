@@ -20,17 +20,12 @@ public class GymPanelController : MonoBehaviour {
 
 	public void GeneratePanel(string gymname, string gymaddress, Sprite gympic){
 
-		/* Alternative if I decide to use prefabs for all panels:
-		 * var instance : GameObject = Instantiate(Resources.Load("Generated Gym Panel"));
-		 * 
-		 * Then somehow get the image and text from the prefab instance?
-		 */
-
 		gymTextView.text = gymname + ", " + gymaddress;
 		gymImageView.sprite = gympic;
 		gymPanelView.SetActive (true);
 
 	}
+
 	public void DeactivatePanel(){
 		gymPanelView.SetActive (false);
 	}
