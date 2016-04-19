@@ -8,6 +8,10 @@ public class ActiveFriendsSlideAnimationScript : MonoBehaviour {
 	//refrence for the pause menu panel in the hierarchy
 	public GameObject activeFriendsPanel;
 	//animator reference
+	public string slideInAnimation;
+	//Name of the slide in animation
+	public string slideOutAnimation;
+	//Name of the slide out animation
 	private Animator anim;
 	//variable for checking if the game is paused 
 	private bool isPaused = false;
@@ -32,26 +36,34 @@ public class ActiveFriendsSlideAnimationScript : MonoBehaviour {
 			UnpauseGame();
 		}
 	}
+
+	public void ToggleFriendsPanel() {
+		if (!isPaused) {
+			PauseGame ();
+		} else {
+			UnpauseGame ();
+		}
+	}
 	
 	//function to pause the game
 	public void PauseGame(){
 		//enable the animator component
 		anim.enabled = true;
 		//play the Slidein animation
-		anim.Play("ActiveFriendsPanelSlideIn");
+		anim.Play(slideInAnimation);
 		//set the isPaused flag to true to indicate that the game is paused
 		isPaused = true;
 		//freeze the timescale
-		Time.timeScale = 0;
+		//Time.timeScale = 0;
 	}
 	//function to unpause the game
 	public void UnpauseGame(){
 		//set the isPaused flag to false to indicate that the game is not paused
 		isPaused = false;
 		//play the SlideOut animation
-		anim.Play("ActiveFriendsPanelSlideOut");
+		anim.Play(slideOutAnimation);
 		//set back the time scale to normal time scale
-		Time.timeScale = 1;
+		//Time.timeScale = 1;
 	}
 	
 }

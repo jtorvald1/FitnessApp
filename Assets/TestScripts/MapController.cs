@@ -161,14 +161,18 @@ public class MapController : MonoBehaviour
 #endif
         Start()
 	{
-        // setup the gui scale according to the screen resolution
-        guiXScale = (Screen.orientation == ScreenOrientation.Landscape ? Screen.width : Screen.height) / 480.0f;
-        guiYScale = (Screen.orientation == ScreenOrientation.Landscape ? Screen.height : Screen.width) / 640.0f;
+		// setup the gui scale according to the screen resolution
+		guiXScale = (Screen.orientation == ScreenOrientation.Landscape ? Screen.width : Screen.height) / 480.0f;
+		guiYScale = (Screen.orientation == ScreenOrientation.Landscape ? Screen.height : Screen.width) / 640.0f;
 		// setup the gui area
-		guiRect = new Rect(16.0f * guiXScale, 4.0f * guiXScale, Screen.width / guiXScale - 32.0f * guiXScale, 32.0f * guiYScale);
+		guiRect = new Rect (16.0f * guiXScale, 4.0f * guiXScale, Screen.width / guiXScale - 32.0f * guiXScale, 32.0f * guiYScale);
 
 		// create the map singleton
 		map = MapBehaviour.Instance;
+		/*foreach (Camera c in Camera.allCameras) {
+			if(c.gameObject.name == "Map Camera")
+			{map.CurrentCamera = c;}
+		}*/
 		map.CurrentCamera = Camera.main;
 		map.InputDelegate += UnitySlippyMap.Input.MapInput.BasicTouchAndKeyboard;
 		map.CurrentZoom = 15.0f;
