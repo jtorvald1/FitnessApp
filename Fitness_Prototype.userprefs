@@ -1,10 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TestScripts\MapController.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\VR Test Game\Assets\Plugins\Editor\WizardEditor.js">
     <Files>
-      <File FileName="Assets\TestScripts\MapController.cs" Line="175" Column="6" />
-      <File FileName="Assets\Scripts\Animation\ActiveFriendsSlideAnimationScript.cs" Line="57" Column="5" />
-      <File FileName="Assets\UnitySlippyMap\Map\MapBehaviour.cs" Line="1209" Column="3" />
+      <File FileName="..\VR Test Game\Assets\Plugins\Editor\WizardEditor.js" Line="160" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
