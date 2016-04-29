@@ -1,8 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\VR Test Game\Assets\Plugins\Editor\WizardEditor.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ScrollLists\CreateGymScrollList.cs">
     <Files>
-      <File FileName="..\VR Test Game\Assets\Plugins\Editor\WizardEditor.js" Line="160" Column="1" />
+      <File FileName="Assets\Scripts\Controllers\UIController.cs" Line="81" Column="45" />
+      <File FileName="Assets\Scripts\Controllers\AppController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ScrollLists\CreateActiveFriendScrollList.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ScrollLists\CreateExerciseScrollList.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ScrollLists\CreateFriendScrollList.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ScrollLists\CreateGymScrollList.cs" Line="59" Column="30" />
+      <File FileName="Assets\Scripts\Info holders\Gym.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ScrollLists\ScrollListButton.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

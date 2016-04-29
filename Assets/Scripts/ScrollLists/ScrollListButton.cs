@@ -10,4 +10,5 @@ public class ScrollListButton : MonoBehaviour {
 	public Image messagesCountImage;
 	//public Text messagesCountText;
 	public int unreadMessagesCount;
+	public Text addressLabel;
 }

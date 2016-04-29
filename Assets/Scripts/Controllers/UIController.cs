@@ -24,6 +24,9 @@ public class UIController : MonoBehaviour {
 	//Friend buttons
 	public List<ScrollListButton> buttonList = new List<ScrollListButton>();
 
+	//Gym buttons
+	public List<ScrollListButton> gymButtonList = new List<ScrollListButton>();
+
 	#region Init
 	private static UIController _instance;
 	public static UIController Instance
@@ -97,9 +100,17 @@ public class UIController : MonoBehaviour {
 	
 	}
 
+	public void PrepareHomePanel () {
+		DisableAllPanels ();
+		EnablePanel (panelName.FacebookLoginPanel);
+
+		GetComponent<CreateGymScrollList>().PrepareGymList();
+	}
+
 	public void PrepareGymPanel (string gymID) {
 		Gym gym = GymManager.Instance.gymList.Find(item => item.GymID == gymID);
 		GymManager.Instance.currentGym = gym;
+		AppController.Instance.AddGymHistory (gym);
 		string gymName = gym.GymName;
 		string gymAddress = gym.GymAddress;
 		Sprite gymPic = gym.GymPicList[0];
