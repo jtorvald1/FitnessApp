@@ -102,24 +102,25 @@ public class UIController : MonoBehaviour {
 
 	public void PrepareHomePanel () {
 		DisableAllPanels ();
-		EnablePanel (panelName.FacebookLoginPanel);
+		EnablePanel (panelName.HomePanel);
 
 		GetComponent<CreateGymScrollList>().PrepareGymList();
 	}
 
 	public void PrepareGymPanel (string gymID) {
+		DisableAllPanels ();
 		Gym gym = GymManager.Instance.gymList.Find(item => item.GymID == gymID);
 		GymManager.Instance.currentGym = gym;
-		AppController.Instance.AddGymHistory (gym);
+		GymManager.Instance.AddGymHistory (gym);
 		string gymName = gym.GymName;
 		string gymAddress = gym.GymAddress;
 		Sprite gymPic = gym.GymPicList[0];
 
 		GymPanelController gymView = GetComponent<GymPanelController>();
 		gymView.GeneratePanel (gymName, gymAddress, gymPic);
-		mapPanel.SetActive (false);
-		GameObject map = GameObject.Find ("[Map]");
-		map.SetActive (false);
+		//mapPanel.SetActive (false);
+		//GameObject map = GameObject.Find ("[Map]");
+		//map.SetActive (false);
 
 		GetComponent<CreateActiveFriendScrollList>().PrepareFriendListCheckedIn(gym);
 
@@ -127,6 +128,7 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void BackToGymPanel () {
+		DisableAllPanels ();
 		Gym gym = GymManager.Instance.currentGym;
 		string gymName = gym.GymName;
 		string gymAddress = gym.GymAddress;
@@ -144,6 +146,7 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void PrepareExercisePanel (string exerciseID) {
+		DisableAllPanels ();
 		Exercise exercise = GymManager.Instance.currentGym.exerciseList.Find(item => item.ExerciseID == exerciseID);
 		GymManager.Instance.currentExercise = exercise;
 		string exerciseName = exercise.ExerciseName;
@@ -165,7 +168,8 @@ public class UIController : MonoBehaviour {
 
 	public void PrepareMapPanel() {
 		DisableAllPanels ();
-		EnablePanel(panelName.MapPanel);
+		//EnablePanel(panelName.MapPanel);
+		Camera.main.enabled = true;
 	}
 
 	public void PrepareFacebookLoginPanel () {
@@ -188,6 +192,7 @@ public class UIController : MonoBehaviour {
 		foreach (GameObject panel in allPanelsList) {
 			panel.SetActive (false);
 		}
+		//Camera.main.enabled = false;
 	}
 
 	public void EnablePanel(GameObject panel) {

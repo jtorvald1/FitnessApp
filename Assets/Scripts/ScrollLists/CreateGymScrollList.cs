@@ -36,7 +36,18 @@ public class CreateGymScrollList : MonoBehaviour {
 	
 	public void PrepareGymList() {
 		itemList.Clear();
+		/*
 		foreach (var gym in GymManager.Instance.gymList) {
+			GymItem item = new GymItem();
+			item.id = gym.GymID;
+			item.name = gym.GymName;
+			item.icon = gym.GymPicList[0];
+			item.address = gym.GymAddress;
+			itemList.Add(item);
+		}
+		*/
+		for (int i=0; i < GymManager.Instance.gymHistory.Count && i < 4; i++) {
+			Gym gym = GymManager.Instance.gymHistory[i];
 			GymItem item = new GymItem();
 			item.id = gym.GymID;
 			item.name = gym.GymName;
@@ -48,6 +59,8 @@ public class CreateGymScrollList : MonoBehaviour {
 	}
 	
 	void PopulateList () {
+		foreach (var button in UIController.Instance.gymButtonList)
+			Destroy (button.gameObject);
 		UIController.Instance.gymButtonList.Clear ();
 		foreach (var item in itemList) {
 			GameObject newButton = Instantiate (gymButton) as GameObject;

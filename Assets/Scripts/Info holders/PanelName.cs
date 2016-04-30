@@ -12,6 +12,7 @@ public class PanelName : MonoBehaviour {
 	public GameObject GeneratedGymPanel;
 	public GameObject GeneratedExercisePanel;
 	public GameObject PleaseLoginPanel;
+	public GameObject HomePanel;
 
 	void Start () {
 	}

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GymManager : MonoBehaviour {
 
 	public List<Gym> gymList;
+	public List<Gym> gymHistory;
 	public Gym currentGym;
 	public Exercise currentExercise;
 	public string currentExerciseID;
@@ -52,5 +53,12 @@ public class GymManager : MonoBehaviour {
 	public Gym GetGymByID(string gymID) {
 		Gym result = gymList.Find(x => x.GymID == gymID);
 		return result;
+	}
+
+	public void AddGymHistory(Gym gym){
+		if (gymHistory.Contains (gym))
+			gymHistory.Remove (gym);
+		gymHistory.Insert(0, gym);
+		//gymHistory.Add (gym);
 	}
 }

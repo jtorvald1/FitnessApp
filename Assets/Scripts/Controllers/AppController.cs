@@ -14,8 +14,6 @@ public class AppController : MonoBehaviour {
 	};
 
 	AppState appState;
-
-	public List<Gym> gymHistory;
 	
 	#region Init
 	private static AppController _instance;
@@ -114,9 +112,5 @@ public class AppController : MonoBehaviour {
 	public void NotLoggedIn(){
 		UIController.Instance.PrepareFacebookLoginPanel();
 		appState = AppState.login;
-	}
-
-	public void AddGymHistory(Gym gym){
-		gymHistory.Add (gym);
 	}
 }

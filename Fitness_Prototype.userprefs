@@ -1,15 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ScrollLists\CreateGymScrollList.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Managers\GymManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Controllers\UIController.cs" Line="81" Column="45" />
+      <File FileName="Assets\Scripts\ScrollLists\CreateGymScrollList.cs" Line="40" Column="28" />
+      <File FileName="Assets\Scripts\Controllers\UIController.cs" Line="114" Column="31" />
       <File FileName="Assets\Scripts\Controllers\AppController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollLists\CreateActiveFriendScrollList.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollLists\CreateExerciseScrollList.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollLists\CreateFriendScrollList.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ScrollLists\CreateGymScrollList.cs" Line="59" Column="30" />
       <File FileName="Assets\Scripts\Info holders\Gym.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ScrollLists\ScrollListButton.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\GymManager.cs" Line="60" Column="28" />
+      <File FileName="Assets\UnitySlippyMap\Helpers\CameraFacingBillboard.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
